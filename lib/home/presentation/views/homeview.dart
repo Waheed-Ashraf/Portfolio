@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/home/presentation/views/widgets/adaptive_layout.dart';
 import 'package:portfolio/home/presentation/views/widgets/desktop_layout.dart';
 import 'package:portfolio/home/presentation/views/widgets/mobile_layout.dart';
-import 'package:portfolio/home/presentation/views/widgets/tablet_layout.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,7 +16,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: MediaQuery.of(context).size.width <= (800 - 48)
+      appBar: MediaQuery.of(context).size.width <= (800)
           ? AppBar(
               elevation: 0,
               backgroundColor: const Color(0xffFAFAFA),
@@ -34,7 +33,6 @@ class _HomeViewState extends State<HomeView> {
       //     : null,
       body: AdaptiveLayout(
         mobileLayout: (context) => const MobileLayout(),
-        tabletLayout: (context) => const TabletLayout(),
         desktopLayout: (context) => const DesktopLayout(),
       ),
     );

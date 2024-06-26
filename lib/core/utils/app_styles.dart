@@ -50,6 +50,14 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle styleBold20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'Comfortaa',
+      fontWeight: FontWeight.w900,
+    );
+  }
+
   static TextStyle styleRegular12(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 12),
@@ -91,7 +99,7 @@ double getResponsiveFontSize(context, {required double fontSize}) {
   double responsiveFontSize = fontSize * scaleFactor;
 
   double lowerLimit = fontSize * .8;
-  double upperLimit = fontSize * 1.2;
+  double upperLimit = fontSize * 1;
 
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
@@ -105,9 +113,12 @@ double getScaleFactor(context) {
   double width = MediaQuery.sizeOf(context).width;
   if (width < SizeConfig.tablet) {
     return width / 550;
-  } else if (width < SizeConfig.desktop) {
-    return width / 1000;
   } else {
-    return width / 1920;
+    return 1;
   }
+  //else if (width < SizeConfig.desktop) {
+  //   return width / 1000;
+  // } else {
+  //   return width / 1920;
+  // }
 }
