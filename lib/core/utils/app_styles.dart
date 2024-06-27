@@ -82,6 +82,14 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle styleBold14(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontFamily: 'Comfortaa',
+      fontWeight: FontWeight.w900,
+    );
+  }
+
   static TextStyle styleSemiBold18(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 18),

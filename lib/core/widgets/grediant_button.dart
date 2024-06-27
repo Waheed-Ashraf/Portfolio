@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_styles.dart';
+import 'package:portfolio/core/utils/color_pallet.dart';
+
+class GradientButton extends StatelessWidget {
+  final String text;
+  final IconData? icon;
+  final Function() onPressed;
+  const GradientButton(
+      {required this.text, required this.onPressed, super.key, this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    const primaryColor = ColorPallet.mainPirpel;
+    const secondaryColor = ColorPallet.darkGreen;
+
+    const double borderRadius = 0;
+
+    return Container(
+      width: 140,
+      height: 40,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          gradient: const LinearGradient(
+              colors: [secondaryColor, primaryColor],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter)),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all(
+              const EdgeInsets.only(right: 0, left: 0, top: 8, bottom: 8)),
+          elevation: MaterialStateProperty.all(0),
+          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius)),
+          ),
+        ),
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: AppStyles.styleBold14(context),
+            ),
+            const SizedBox(
+              width: 4,
+            ),
+            Icon(
+              icon,
+              size: 20,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

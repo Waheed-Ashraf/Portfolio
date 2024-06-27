@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_images.dart';
+import 'package:portfolio/core/utils/color_pallet.dart';
 
 class HomeProfileImageWidget extends StatelessWidget {
   const HomeProfileImageWidget({super.key});
@@ -28,13 +30,20 @@ class HomeProfileImageWidget extends StatelessWidget {
                       bottomRight: Radius.circular(400),
                       topLeft: Radius.circular(400),
                     ),
-                    //  gradient: Application.deviceDarkTheme?Palette.gradientBlue:Palette.gradientPrimary,
+                    gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          ColorPallet.mainPirpel,
+                          Colors.black,
+                          ColorPallet.darkGreen
+                        ]),
                   ),
                 ),
               ),
               Positioned.fill(
                   child: Image.asset(
-                "Images.me",
+                Assets.profilePic1,
                 fit: BoxFit.fitHeight,
               ))
             ],
