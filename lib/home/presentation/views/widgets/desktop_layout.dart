@@ -21,21 +21,3 @@ class DesktopLayout extends StatelessWidget {
     ));
   }
 }
-
-
-// Container(
-//       height: 500,
-//       decoration: const BoxDecoration(
-//           gradient: LinearGradient(
-//               begin: Alignment.topRight,
-//               end: Alignment.bottomLeft,
-//               stops: [
-//             0.1,
-//             0.9,
-//           ],
-//               colors: [
-//             ColorPallet.mainPirpel,
-//             Colors.black,
-//             ColorPallet.darkGreen
-//           ])),
-//       child:

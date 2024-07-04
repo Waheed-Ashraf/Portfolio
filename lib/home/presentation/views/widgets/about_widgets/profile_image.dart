@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:portfolio/core/utils/app_images.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 
@@ -24,13 +25,14 @@ class HomeProfileImageWidget extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                   height: 280,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: ColorPallet.pink, width: 2),
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(200),
-                      bottomRight: Radius.circular(400),
-                      topLeft: Radius.circular(400),
+                      bottomRight: Radius.circular(410),
+                      topLeft: Radius.circular(410),
                     ),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
