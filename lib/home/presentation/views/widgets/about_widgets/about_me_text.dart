@@ -9,6 +9,8 @@ import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/widgets/custom_button.dart';
 import 'package:portfolio/core/widgets/grediant_button.dart';
+import 'package:portfolio/core/widgets/snak_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'dart:io' as io;
 import 'package:universal_html/html.dart' as html;
@@ -84,7 +86,9 @@ class AboutText extends StatelessWidget {
                   color: Colors.white,
                   withBorder: true,
                   text: "Let's Talk",
-                  onPressed: () {},
+                  onPressed: () {
+                    _launchWhatsApp(context);
+                  },
                   widget: Padding(
                     padding: const EdgeInsets.only(left: 6),
                     child: SvgPicture.asset(
@@ -113,12 +117,9 @@ class AboutText extends StatelessWidget {
         await dio.download(cvUrl, filePath);
 
         // File downloaded successfully
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('CV downloaded to $filePath'),
-            duration: const Duration(seconds: 3),
-          ),
-        );
+
+        showSnackBar(context,
+            color: ColorPallet.mainPirpel, message: "CV downloaded");
       } else if (kIsWeb) {
         // Web platform
         html.AnchorElement anchorElement = html.AnchorElement(href: cvUrl);
@@ -126,26 +127,47 @@ class AboutText extends StatelessWidget {
         anchorElement.click();
 
         // File downloaded successfully
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('CV downloaded'),
-            duration: Duration(seconds: 3),
-          ),
-        );
+
+        showSnackBar(context,
+            color: ColorPallet.mainPirpel, message: "CV downloaded");
       } else {
         // Unsupported platform
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Unsupported platform'),
-            duration: Duration(seconds: 3),
-          ),
-        );
+
+        showSnackBar(context,
+            color: Colors.red, message: "Unsupported plateform");
       }
     } catch (e) {
       // Handle any errors during the download
+
+      showSnackBar(context,
+          color: Colors.red, message: "CV downloading Error $e");
+    }
+  }
+
+  Future<void> _launchWhatsApp(BuildContext context) async {
+    const String phoneNumber = '201095994970';
+    const String message = 'Hello, I am interested in your work!';
+    final String whatsappUrlMobile =
+        'whatsapp://send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}';
+    final String whatsappUrlWeb =
+        'https://api.whatsapp.com/send/?phone=$phoneNumber&text=${Uri.encodeComponent(message)}';
+
+    try {
+      if (kIsWeb) {
+        html.window.open(whatsappUrlWeb, 'new tab');
+      } else {
+        final Uri url = Uri.parse(whatsappUrlMobile);
+
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        } else {
+          throw 'Could not launch $whatsappUrlMobile';
+        }
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error downloading CV: $e'),
+          content: Text('Error launching WhatsApp: $e'),
           duration: const Duration(seconds: 3),
         ),
       );

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_styles.dart';
+import 'package:portfolio/core/utils/color_pallet.dart';
 
 void showSnackBar(BuildContext context,
     {required Color color, required String message}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(16),
       behavior: SnackBarBehavior.floating,
       // width: 200,
       margin: const EdgeInsets.symmetric(horizontal: 24),
@@ -12,7 +14,8 @@ void showSnackBar(BuildContext context,
       content: Center(
         child: Text(
           message,
-          style: const TextStyle(color: Colors.white),
+          style: AppStyles.styleBold14(context)
+              .copyWith(color: ColorPallet.darkSky),
         ),
       ),
       backgroundColor: color,
