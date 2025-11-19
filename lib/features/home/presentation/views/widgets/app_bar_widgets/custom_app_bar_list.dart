@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/home/data/models/app_bar_item_model.dart';
-import 'package:portfolio/home/presentation/views/widgets/app_bar_widgets/app_bar_text_button.dart';
+import 'package:portfolio/features/home/data/models/app_bar_item_model.dart';
+import 'package:portfolio/features/home/presentation/views/widgets/app_bar_widgets/app_bar_text_button.dart';
 
 class CustomAppBarList extends StatefulWidget {
   const CustomAppBarList({super.key});

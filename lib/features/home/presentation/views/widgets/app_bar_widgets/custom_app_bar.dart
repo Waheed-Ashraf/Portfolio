@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
-import 'package:portfolio/home/presentation/views/widgets/app_bar_widgets/custom_app_bar_list.dart';
+import 'package:portfolio/features/home/presentation/views/widgets/app_bar_widgets/custom_app_bar_list.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorPallet.mainPirpel,
+      color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Row(
