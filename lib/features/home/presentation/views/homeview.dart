@@ -26,11 +26,11 @@ class _HomeViewState extends State<HomeView> {
       ),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.transparent, // 👈 IMPORTANT
+        backgroundColor: Colors.transparent,
         appBar: MediaQuery.of(context).size.width <= 799
             ? AppBar(
                 elevation: 0,
-                backgroundColor: Colors.transparent, // 👈 Keep gradient visible
+                backgroundColor: Colors.transparent,
                 leading: IconButton(
                   onPressed: () => scaffoldKey.currentState!.openDrawer(),
                   icon: const Icon(Icons.menu),
