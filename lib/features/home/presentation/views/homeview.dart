@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.transparent,
-        appBar: MediaQuery.of(context).size.width <= 799
+        appBar: MediaQuery.sizeOf(context).width <= 799
             ? AppBar(
                 elevation: 0,
                 backgroundColor: Colors.transparent,
