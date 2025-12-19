@@ -8,4 +8,14 @@ class Assets {
   static const String depiCert = "assets/images/DEPI_Cert.jpg";
 
   static const String craftsceneLogo = "assets/images/craftscene_logo.png";
+
+  static const String dartLogo = "assets/images/Dart.svg";
+  static const String firebaseLogo = "assets/images/firebase.svg";
+  static const String flutterLogo = "assets/images/flutter.svg";
+  static const String googleCloude = "assets/images/google-cloud.svg";
+  static const String insomniaLogo = "assets/images/Insomnia.svg";
+  static const String postmanLogo = "assets/images/Postman.svg";
+  static const String gitHubActions = "assets/images/GitHubActions.svg";
+  static const String gitHubLogo = "assets/images/github-mark.svg";
+  static const String javaLogo = "assets/images/Java.svg";
 }
