@@ -105,7 +105,7 @@ class AboutText extends StatelessWidget {
   }
 
   final String cvUrl =
-      'https://drive.google.com/uc?export=download&id=1HM2-CFEf0pc-wOD3FFbwE4NqjJpTyveX';
+      'https://drive.google.com/uc?export=download&id=1eD_WE-uRSn-YXKv4KLl_9FVWIt_wQCuZ';
 
   Future<void> _downloadCV(BuildContext context) async {
     try {
