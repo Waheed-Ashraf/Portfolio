@@ -6,4 +6,6 @@ class Assets {
   static const String whatsAppIcon = "assets/images/whatsapp.svg";
   static const String cleanArch = "assets/images/Clean_arch.jpg";
   static const String depiCert = "assets/images/DEPI_Cert.jpg";
+
+  static const String craftsceneLogo = "assets/images/craftscene_logo.png";
 }

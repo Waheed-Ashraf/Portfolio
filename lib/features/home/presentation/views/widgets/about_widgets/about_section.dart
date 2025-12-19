@@ -8,8 +8,9 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuerySizeHeight = MediaQuery.sizeOf(context).height;
     return Container(
-      constraints: const BoxConstraints(minHeight: 600),
+      constraints: BoxConstraints(minHeight: mediaQuerySizeHeight),
       child: const Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
