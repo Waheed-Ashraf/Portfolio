@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/features/home/data/models/education_and_courses_model.dart';
 
@@ -16,14 +17,13 @@ class EducationAndCoursesSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 40.0),
             child: Text(
               "Education & Courses",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
+              style: AppStyles.styleSectionTitle(context).copyWith(
+                color: ColorPallet.white,
+                shadows: AppStyles.sectionTitleShadow(),
               ),
             ),
           ),

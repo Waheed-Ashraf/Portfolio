@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/size_config.dart';
 
 abstract class AppStyles {
@@ -97,6 +98,23 @@ abstract class AppStyles {
       fontWeight: FontWeight.w600,
     );
   }
+
+  static TextStyle styleSectionTitle(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 34),
+      fontFamily: 'Comfortaa',
+      fontWeight: FontWeight.w700,
+      letterSpacing: 0.4,
+      height: 1.2,
+    );
+  }
+
+  static List<Shadow> sectionTitleShadow() => [
+        Shadow(
+          color: ColorPallet.pink.withValues(alpha: 0.25),
+          blurRadius: 12,
+        ),
+      ];
 }
 
 // sacleFactor

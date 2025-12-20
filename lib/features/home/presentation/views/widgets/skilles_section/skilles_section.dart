@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/features/home/data/models/skills_model.dart';
 
@@ -62,14 +63,13 @@ class _SkillsSectionState extends State<SkillsSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 40.0),
             child: Text(
               "Skills",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
+              style: AppStyles.styleSectionTitle(context).copyWith(
+                color: ColorPallet.white,
+                shadows: AppStyles.sectionTitleShadow(),
               ),
             ),
           ),

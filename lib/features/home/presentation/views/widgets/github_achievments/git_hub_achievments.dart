@@ -1,8 +1,12 @@
+import 'dart:ui';
 import 'dart:ui_web'; // platformViewRegistry (web only)
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_images.dart';
+import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
+import 'package:portfolio/core/utils/launch_url.dart';
 import 'package:universal_html/html.dart' as html;
 
 class GithubActivitySection extends StatelessWidget {
@@ -22,20 +26,19 @@ class GithubActivitySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 40.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 40.0),
             child: Text(
               "GitHub Achievements & Activity",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
+              style: AppStyles.styleSectionTitle(context).copyWith(
+                color: ColorPallet.white,
+                shadows: AppStyles.sectionTitleShadow(),
               ),
             ),
           ),
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: _GlassCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,10 +48,8 @@ class GithubActivitySection extends StatelessWidget {
                   // -----------------------
                   Text(
                     "Contributions",
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.9),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
+                    style: AppStyles.styleSemiBold16(context).copyWith(
+                      color: ColorPallet.white.withValues(alpha: 0.9),
                     ),
                   ),
                   const SizedBox(height: 14),
@@ -58,7 +59,8 @@ class GithubActivitySection extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(14),
-                      color: Colors.black.withValues(alpha: 0.25),
+                      // ✅ palette-based "glass" dark background
+                      color: ColorPallet.mainPirpel.withValues(alpha: 0.25),
                       child: WebSafeNetworkImage(
                         url: graphUrl, // SVG
                         height: 170,
@@ -74,27 +76,47 @@ class GithubActivitySection extends StatelessWidget {
                   // -----------------------
                   Text(
                     "Achievements",
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.9),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
+                    style: AppStyles.styleSemiBold16(context).copyWith(
+                      color: ColorPallet.white.withValues(alpha: 0.9),
                     ),
                   ),
                   const SizedBox(height: 14),
+
                   SizedBox(
                     height: 150,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: achievements.length,
-                      separatorBuilder: (_, __) => const SizedBox(width: 14),
-                      itemBuilder: (context, i) {
-                        final a = achievements[i];
-                        return SizedBox(
-                          width: 210,
-                          child: _AchievementCard(model: a),
-                        );
-                      },
+                    child: ScrollConfiguration(
+                      behavior: ScrollConfiguration.of(context).copyWith(
+                        dragDevices: {
+                          PointerDeviceKind.mouse,
+                          PointerDeviceKind.touch,
+                          PointerDeviceKind.trackpad,
+                        },
+                      ),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        child: Row(
+                          children: [
+                            for (int i = 0; i < achievements.length; i++) ...[
+                              SizedBox(
+                                width: 150,
+                                child: GestureDetector(
+                                  onTap: achievements[i].url == null
+                                      ? null
+                                      : () => launchCustomUr(
+                                            context: context,
+                                            url: achievements[i].url!,
+                                          ),
+                                  child:
+                                      _AchievementCard(model: achievements[i]),
+                                ),
+                              ),
+                              if (i != achievements.length - 1)
+                                const SizedBox(width: 14),
+                            ],
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -124,7 +146,11 @@ class _GlassCard extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [ColorPallet.mainPirpel, Colors.black, ColorPallet.darkGreen],
+          colors: [
+            ColorPallet.mainPirpel,
+            ColorPallet.darkGreen,
+            ColorPallet.mainPirpel,
+          ],
         ),
         boxShadow: [
           BoxShadow(
@@ -141,7 +167,7 @@ class _GlassCard extends StatelessWidget {
 
 /// Web-safe image loader:
 /// - Web: uses HtmlElementView(<img>) to bypass XHR/CORS issues (SVG + PNG work).
-/// - Non-web: uses Image.network normally (PNG/JPG best; SVG may not render).
+/// - Non-web: uses Image.network normally.
 class WebSafeNetworkImage extends StatelessWidget {
   final String url;
   final BoxFit fit;
@@ -160,15 +186,13 @@ class WebSafeNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!kIsWeb) {
-      // On non-web: SVG via Image.network won't work.
-      // If you ever need this section on mobile/desktop, either:
-      // 1) force PNG endpoints, or
-      // 2) use flutter_svg with a CORS-safe proxy.
       if (_isSvg) {
-        return const Center(
+        return Center(
           child: Text(
             "SVG preview is supported on Web",
-            style: TextStyle(color: Colors.white70),
+            style: AppStyles.styleRegular12(context).copyWith(
+              color: ColorPallet.white.withValues(alpha: 0.7),
+            ),
           ),
         );
       }
@@ -180,9 +204,13 @@ class WebSafeNetworkImage extends StatelessWidget {
           if (progress == null) return child;
           return const Center(child: CircularProgressIndicator());
         },
-        errorBuilder: (_, __, ___) => const Center(
-          child:
-              Text("Failed to load", style: TextStyle(color: Colors.white70)),
+        errorBuilder: (_, __, ___) => Center(
+          child: Text(
+            "Failed to load",
+            style: AppStyles.styleRegular12(context).copyWith(
+              color: ColorPallet.white.withValues(alpha: 0.7),
+            ),
+          ),
         ),
       );
     }
@@ -269,11 +297,13 @@ class _HtmlImgState extends State<_HtmlImg> {
             child: Center(child: CircularProgressIndicator()),
           ),
         if (_failed)
-          const Positioned.fill(
+          Positioned.fill(
             child: Center(
               child: Text(
                 "Failed to load",
-                style: TextStyle(color: Colors.white70),
+                style: AppStyles.styleRegular12(context).copyWith(
+                  color: ColorPallet.white.withValues(alpha: 0.7),
+                ),
               ),
             ),
           ),
@@ -284,8 +314,8 @@ class _HtmlImgState extends State<_HtmlImg> {
 
 class AchievementModel {
   final String title;
-  final String imageAsset; // local asset (svg/png)
-  final String? url; // optional link to GitHub profile / repo / certificate
+  final String imageAsset;
+  final String? url;
 
   const AchievementModel({
     required this.title,
@@ -296,13 +326,23 @@ class AchievementModel {
 
 const achievements = <AchievementModel>[
   AchievementModel(
-    title: "Arctic Code Vault",
-    imageAsset: "assets/achievements/arctic.png",
+    title: "Pair Extraordinaire",
+    imageAsset: Assets.pairExtraordinaire,
     url: "https://github.com/Waheed-Ashraf",
   ),
   AchievementModel(
     title: "Pull Shark",
-    imageAsset: "assets/achievements/pull_shark.png",
+    imageAsset: Assets.pullShark,
+    url: "https://github.com/Waheed-Ashraf",
+  ),
+  AchievementModel(
+    title: "YOLO",
+    imageAsset: Assets.yoloBadge,
+    url: "https://github.com/Waheed-Ashraf",
+  ),
+  AchievementModel(
+    title: "Quickdraw",
+    imageAsset: Assets.quickDrawSkinTone1,
     url: "https://github.com/Waheed-Ashraf",
   ),
 ];
@@ -336,7 +376,7 @@ class _AchievementCardState extends State<_AchievementCard> {
                 : ColorPallet.pink.withValues(alpha: 0.45),
             width: 2,
           ),
-          color: Colors.black.withValues(alpha: 0.25),
+          color: ColorPallet.mainPirpel.withValues(alpha: 0.18),
           boxShadow: hovered
               ? [
                   BoxShadow(
@@ -346,34 +386,7 @@ class _AchievementCardState extends State<_AchievementCard> {
                 ]
               : [],
         ),
-        child: Row(
-          children: [
-            Container(
-              height: 54,
-              width: 54,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                color: Colors.black.withValues(alpha: 0.25),
-                border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
-              ),
-              child: Image.asset(m.imageAsset, fit: BoxFit.contain),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                m.title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ],
-        ),
+        child: Image.asset(m.imageAsset, fit: BoxFit.contain),
       ),
     );
   }

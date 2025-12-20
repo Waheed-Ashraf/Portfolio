@@ -18,4 +18,11 @@ class Assets {
   static const String gitHubActions = "assets/images/GitHubActions.svg";
   static const String gitHubLogo = "assets/images/github-mark.svg";
   static const String javaLogo = "assets/images/Java.svg";
+
+  static const String pairExtraordinaire =
+      "assets/images/PairExtraordinaire.png";
+  static const String pullShark = "assets/images/PullShark.png";
+  static const String quickDrawSkinTone1 =
+      "assets/images/QuickDraw_SkinTone1.png";
+  static const String yoloBadge = "assets/images/YOLO_Badge.png";
 }
