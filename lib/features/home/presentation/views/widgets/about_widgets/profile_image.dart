@@ -47,7 +47,7 @@ class HomeProfileImageWidget extends StatelessWidget {
                 ),
                 Positioned.fill(
                     child: Image.asset(
-                  Assets.profilePic1,
+                  Assets.profileAnimatedPic3,
                   fit: BoxFit.fitHeight,
                 )),
                 Positioned(

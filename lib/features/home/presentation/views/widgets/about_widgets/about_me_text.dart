@@ -7,9 +7,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:portfolio/core/utils/app_images.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
+import 'package:portfolio/core/utils/launch_url.dart';
 import 'package:portfolio/core/widgets/custom_button.dart';
 import 'package:portfolio/core/widgets/grediant_button.dart';
 import 'package:portfolio/core/widgets/snak_bar.dart';
+import 'package:portfolio/features/home/presentation/views/widgets/about_widgets/social_icon_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'dart:io' as io;
@@ -66,37 +68,83 @@ class AboutText extends StatelessWidget {
           height: 24,
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 40,
-              child: GradientButton(
-                onPressed: () {
-                  _downloadCV(context);
-                },
-                text: "Download CV",
-                icon: Icons.download,
+            Expanded(
+              child: SizedBox(
+                height: 40,
+                child: GradientButton(
+                  onPressed: () {
+                    _downloadCV(context);
+                  },
+                  text: "Download CV",
+                  icon: Icons.download,
+                ),
               ),
             ),
             const SizedBox(
               width: 16,
             ),
-            SizedBox(
-              height: 40,
-              child: CustomButton(
-                  color: Colors.white,
-                  withBorder: true,
-                  text: "Let's Talk",
-                  onPressed: () {
-                    _launchWhatsApp(context);
-                  },
-                  widget: Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: SvgPicture.asset(
-                      Assets.whatsAppIcon,
-                      width: 20,
-                      fit: BoxFit.cover,
-                    ),
-                  )),
+            Expanded(
+              child: SizedBox(
+                height: 40,
+                child: CustomButton(
+                    color: Colors.white,
+                    withBorder: true,
+                    text: "Let's Talk",
+                    onPressed: () {
+                      _launchWhatsApp(context);
+                    },
+                    widget: Padding(
+                      padding: const EdgeInsets.only(left: 6),
+                      child: SvgPicture.asset(
+                        Assets.whatsAppIcon,
+                        width: 20,
+                        fit: BoxFit.cover,
+                      ),
+                    )),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        // Social row
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SocialIconButton(
+              icon: Icons.linked_camera, // change to proper icons if you want
+              tooltip: "LinkedIn",
+              accent: ColorPallet.skyColor,
+              onTap: () => launchCustomUr(
+                  context: context,
+                  url: "https://www.linkedin.com/in/your-link"),
+            ),
+            const SizedBox(width: 10),
+            SocialIconButton(
+              icon: Icons.code,
+              tooltip: "GitHub",
+              accent: ColorPallet.white,
+              onTap: () => launchCustomUr(
+                  context: context, url: "https://github.com/Waheed-Ashraf"),
+            ),
+            const SizedBox(width: 10),
+            SocialIconButton(
+              icon: Icons.alternate_email,
+              tooltip: "Email",
+              accent: ColorPallet.pink,
+              onTap: () => launchCustomUr(
+                  context: context, url: "mailto:washraf124@gmail.com"),
+            ),
+            const SizedBox(width: 10),
+            SocialIconButton(
+              icon: Icons.language,
+              tooltip: "Portfolio / Website",
+              accent: ColorPallet.darkSky,
+              onTap: () => launchCustomUr(
+                  context: context, url: "https://your-website.com"),
             ),
           ],
         ),
