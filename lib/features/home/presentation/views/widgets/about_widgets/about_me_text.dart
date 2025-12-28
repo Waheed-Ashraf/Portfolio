@@ -68,45 +68,27 @@ class AboutText extends StatelessWidget {
           height: 24,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: SizedBox(
-                height: 40,
-                child: GradientButton(
-                  onPressed: () {
-                    _downloadCV(context);
-                  },
-                  text: "Download CV",
-                  icon: Icons.download,
-                ),
+              child: ValorantButton(
+                label: "DOWNLOAD CV",
+                variant: ValorantButtonVariant.filled,
+                accent: ColorPallet.pink, // red/pink like screenshot
+                onTap: () => _downloadCV(context),
               ),
             ),
-            const SizedBox(
-              width: 16,
-            ),
+            const SizedBox(width: 14),
             Expanded(
-              child: SizedBox(
-                height: 40,
-                child: CustomButton(
-                    color: Colors.white,
-                    withBorder: true,
-                    text: "Let's Talk",
-                    onPressed: () {
-                      _launchWhatsApp(context);
-                    },
-                    widget: Padding(
-                      padding: const EdgeInsets.only(left: 6),
-                      child: SvgPicture.asset(
-                        Assets.whatsAppIcon,
-                        width: 20,
-                        fit: BoxFit.cover,
-                      ),
-                    )),
+              child: ValorantButton(
+                label: "LET'S TALK",
+                variant: ValorantButtonVariant.outline,
+                accent: ColorPallet.pink,
+                onTap: () => _launchWhatsApp(context),
               ),
             ),
           ],
         ),
+
         const SizedBox(
           height: 24,
         ),
