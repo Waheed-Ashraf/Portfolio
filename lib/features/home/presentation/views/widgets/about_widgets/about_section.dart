@@ -11,7 +11,7 @@ class AboutSection extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, c) {
-        final isSmall = c.maxWidth < 900; // tweak if you want
+        final isSmall = c.maxWidth < 800; // tweak if you want
 
         return Container(
           constraints: BoxConstraints(minHeight: isSmall ? 0 : h),
