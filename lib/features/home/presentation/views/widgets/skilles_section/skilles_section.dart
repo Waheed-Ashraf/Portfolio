@@ -19,12 +19,11 @@ class _SkillsSectionState extends State<SkillsSection> {
   Timer? _timer;
   bool _pause = false;
 
-  // tweak these
-  static const double _speedPxPerTick = 0.8; // smooth speed
-  static const Duration _tick = Duration(milliseconds: 16); // ~60fps
-  static const double _resetOffset = 50.0; // reset before reaching the end
+  static const double _speedPxPerTick = 0.8;
+  static const Duration _tick = Duration(milliseconds: 16);
+  static const double _resetOffset = 50.0;
 
-  List<SkillModel> get _looped => [...skillsList, ...skillsList]; // duplicate
+  List<SkillModel> get _looped => [...skillsList, ...skillsList];
 
   @override
   void initState() {
