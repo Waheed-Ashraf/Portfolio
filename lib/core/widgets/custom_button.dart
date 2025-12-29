@@ -186,7 +186,7 @@ class _ValorantButtonState extends State<ValorantButton> {
                           children: [
                             // subtle scan line (very Valorant)
                             if (_hovered && filled)
-                              Positioned.fill(
+                              const Positioned.fill(
                                 child: IgnorePointer(
                                   child: Opacity(
                                     opacity: 0.12,
@@ -197,8 +197,11 @@ class _ValorantButtonState extends State<ValorantButton> {
 
                             // CONTENT
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 18),
+                              padding: const EdgeInsets.only(
+                                left: 18,
+                                right: 18,
+                                top: 4,
+                              ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
