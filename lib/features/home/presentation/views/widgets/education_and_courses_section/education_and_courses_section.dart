@@ -44,7 +44,7 @@ class EducationAndCoursesSection extends StatelessWidget {
                 itemCount: educationAndCoursesList.length,
                 itemBuilder: (context, index) {
                   return SizedBox(
-                    width: 350,
+                    width: 320,
                     child:
                         _EducationCard(model: educationAndCoursesList[index]),
                   );

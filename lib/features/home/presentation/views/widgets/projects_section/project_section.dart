@@ -44,7 +44,7 @@ class ProjectsSection extends StatelessWidget {
                 separatorBuilder: (_, __) => const SizedBox(width: 18),
                 itemBuilder: (context, index) {
                   return SizedBox(
-                    width: 380,
+                    width: 320,
                     child: _ProjectCard(model: projectsList[index]),
                   );
                 },
