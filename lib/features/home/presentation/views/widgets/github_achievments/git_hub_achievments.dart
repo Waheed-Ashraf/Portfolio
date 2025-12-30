@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'dart:ui_web'; // platformViewRegistry (web only)
+import 'dart:ui_web';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
@@ -57,14 +57,49 @@ class GithubActivitySection extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Container(
-                      width: double.infinity,
                       padding: const EdgeInsets.all(14),
-                      // ✅ palette-based "glass" dark background
                       color: ColorPallet.mainPirpel.withValues(alpha: 0.25),
-                      child: WebSafeNetworkImage(
-                        url: graphUrl, // SVG
-                        height: 170,
-                        fit: BoxFit.contain,
+                      child: LayoutBuilder(
+                        builder: (context, c) {
+                          const double fixedGraphWidth =
+                              720; // readable like GitHub
+                          final bool needsScroll = c.maxWidth < fixedGraphWidth;
+
+                          final graph = SizedBox(
+                            width: fixedGraphWidth,
+                            height: 170,
+                            child: WebSafeNetworkImage(
+                              url: graphUrl,
+                              height: 170,
+                              fit: BoxFit.contain,
+                            ),
+                          );
+
+                          if (!needsScroll) {
+                            // Desktop/tablet -> center it nicely
+                            return Align(
+                              alignment: Alignment.center,
+                              child: graph,
+                            );
+                          }
+
+                          // Mobile -> scroll horizontally instead of shrinking
+                          return ScrollConfiguration(
+                            behavior: ScrollConfiguration.of(context).copyWith(
+                              dragDevices: {
+                                PointerDeviceKind.touch,
+                                PointerDeviceKind.mouse,
+                                PointerDeviceKind.trackpad,
+                              },
+                              scrollbars: false,
+                            ),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              physics: const BouncingScrollPhysics(),
+                              child: graph,
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -251,8 +286,7 @@ class _HtmlImgState extends State<_HtmlImg> {
         ..src = widget.url
         ..style.width = '100%'
         ..style.height = widget.height == null ? '100%' : '${widget.height}px'
-        ..style.objectFit = _toCssObjectFit(widget.fit)
-        ..style.imageRendering = 'pixelated';
+        ..style.objectFit = _toCssObjectFit(widget.fit);
 
       img.onLoad.listen((_) {
         if (mounted) setState(() => _loaded = true);
