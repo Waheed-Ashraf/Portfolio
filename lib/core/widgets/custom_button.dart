@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
@@ -200,7 +198,7 @@ class _ValorantButtonState extends State<ValorantButton> {
                               padding: const EdgeInsets.only(
                                 left: 18,
                                 right: 18,
-                                top: 4,
+                                top: 6,
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
