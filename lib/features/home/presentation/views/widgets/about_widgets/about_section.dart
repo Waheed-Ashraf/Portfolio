@@ -11,13 +11,12 @@ class AboutSection extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, c) {
-        final isSmall = c.maxWidth < 800; // tweak if you want
+        final isSmall = c.maxWidth < 800;
 
         return Container(
           constraints: BoxConstraints(minHeight: isSmall ? 0 : h),
           padding: EdgeInsets.symmetric(
             horizontal: isSmall ? 16 : 0,
-            vertical: isSmall ? 24 : 0,
           ),
           child: isSmall ? const _AboutMobile() : const _AboutDesktop(),
         );

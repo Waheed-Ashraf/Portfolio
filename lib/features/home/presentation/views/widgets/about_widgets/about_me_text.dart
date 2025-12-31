@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -21,151 +22,154 @@ class AboutText extends StatelessWidget {
   Widget build(BuildContext context) {
     final isCompact = MediaQuery.sizeOf(context).width < 800; // or < 700
 
-    return Column(
-      mainAxisAlignment:
-          isCompact ? MainAxisAlignment.start : MainAxisAlignment.center,
-      crossAxisAlignment:
-          isCompact ? CrossAxisAlignment.center : CrossAxisAlignment.start,
-      children: [
-        Text("Hi There!", style: AppStyles.styleBold20(context)),
-        Text("It's Waheed Ashraf,", style: AppStyles.styleBold20(context)),
+    return FadeInUpBig(
+      duration: const Duration(seconds: 1),
+      child: Column(
+        mainAxisAlignment:
+            isCompact ? MainAxisAlignment.start : MainAxisAlignment.center,
+        crossAxisAlignment:
+            isCompact ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+        children: [
+          Text("Hi There!", style: AppStyles.styleBold20(context)),
+          Text("It's Waheed Ashraf,", style: AppStyles.styleBold20(context)),
 
-        const SizedBox(height: 8),
+          const SizedBox(height: 8),
 
-        // ✅ Replace Row with Wrap to avoid overflow on small screens
-        Wrap(
-          alignment: isCompact ? WrapAlignment.center : WrapAlignment.start,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 6,
-          runSpacing: 6,
-          children: [
-            Text("I'm a", style: AppStyles.styleBold20(context)),
-            AnimatedTextKit(
-              repeatForever: true,
-              animatedTexts: [
-                TyperAnimatedText(
-                  'Software Engineer,',
-                  textStyle: AppStyles.styleBold20(context)
-                      .copyWith(color: ColorPallet.skyColor),
-                ),
-                TyperAnimatedText(
-                  'Flutter Developer,',
-                  textStyle: AppStyles.styleBold20(context)
-                      .copyWith(color: ColorPallet.skyColor),
-                ),
-                TyperAnimatedText(
-                  'Mobile App Developer,',
-                  textStyle: AppStyles.styleBold20(context)
-                      .copyWith(color: ColorPallet.skyColor),
-                ),
-              ],
-            ),
-          ],
-        ),
+          // ✅ Replace Row with Wrap to avoid overflow on small screens
+          Wrap(
+            alignment: isCompact ? WrapAlignment.center : WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              Text("I'm a", style: AppStyles.styleBold20(context)),
+              AnimatedTextKit(
+                repeatForever: true,
+                animatedTexts: [
+                  TyperAnimatedText(
+                    'Software Engineer,',
+                    textStyle: AppStyles.styleBold20(context)
+                        .copyWith(color: ColorPallet.skyColor),
+                  ),
+                  TyperAnimatedText(
+                    'Flutter Developer,',
+                    textStyle: AppStyles.styleBold20(context)
+                        .copyWith(color: ColorPallet.skyColor),
+                  ),
+                  TyperAnimatedText(
+                    'Mobile App Developer,',
+                    textStyle: AppStyles.styleBold20(context)
+                        .copyWith(color: ColorPallet.skyColor),
+                  ),
+                ],
+              ),
+            ],
+          ),
 
-        const SizedBox(height: 16),
+          const SizedBox(height: 16),
 
-        Text(
-          "Excited to connect with like-minded professionals, potential collaborators, and anyone interested in my work. Whether you have a question about one of my projects, want to discuss potential opportunities, or just want to say hello, feel free to reach out. Your feedback and inquiries are always welcome.",
-          textAlign: isCompact ? TextAlign.center : TextAlign.start,
-          style: AppStyles.styleBold16(context)
-              .copyWith(color: ColorPallet.darkSky),
-        ),
+          Text(
+            "Excited to connect with like-minded professionals, potential collaborators, and anyone interested in my work. Whether you have a question about one of my projects, want to discuss potential opportunities, or just want to say hello, feel free to reach out. Your feedback and inquiries are always welcome.",
+            textAlign: isCompact ? TextAlign.center : TextAlign.start,
+            style: AppStyles.styleBold16(context)
+                .copyWith(color: ColorPallet.darkSky),
+          ),
 
-        const SizedBox(height: 24),
+          const SizedBox(height: 24),
 
-        // ✅ Buttons: on small screens -> Column, otherwise Row
-        LayoutBuilder(
-          builder: (context, c) {
-            final stackButtons = c.maxWidth < 420;
-            return stackButtons
-                ? Column(
-                    children: [
-                      SizedBox(
-                        width: double.infinity,
-                        child: ValorantButton(
-                          label: "DOWNLOAD CV",
-                          variant: ValorantButtonVariant.filled,
-                          accent: ColorPallet.pink,
-                          onTap: () => _downloadCV(context),
+          // ✅ Buttons: on small screens -> Column, otherwise Row
+          LayoutBuilder(
+            builder: (context, c) {
+              final stackButtons = c.maxWidth < 420;
+              return stackButtons
+                  ? Column(
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: ValorantButton(
+                            label: "DOWNLOAD CV",
+                            variant: ValorantButtonVariant.filled,
+                            accent: ColorPallet.pink,
+                            onTap: () => _downloadCV(context),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ValorantButton(
-                          label: "LET'S TALK",
-                          variant: ValorantButtonVariant.outline,
-                          accent: ColorPallet.pink,
-                          onTap: () => _launchWhatsApp(context),
+                        const SizedBox(height: 12),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ValorantButton(
+                            label: "LET'S TALK",
+                            variant: ValorantButtonVariant.outline,
+                            accent: ColorPallet.pink,
+                            onTap: () => _launchWhatsApp(context),
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                : Row(
-                    children: [
-                      Expanded(
-                        child: ValorantButton(
-                          label: "DOWNLOAD CV",
-                          variant: ValorantButtonVariant.filled,
-                          accent: ColorPallet.pink,
-                          onTap: () => _downloadCV(context),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Expanded(
+                          child: ValorantButton(
+                            label: "DOWNLOAD CV",
+                            variant: ValorantButtonVariant.filled,
+                            accent: ColorPallet.pink,
+                            onTap: () => _downloadCV(context),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: ValorantButton(
-                          label: "LET'S TALK",
-                          variant: ValorantButtonVariant.outline,
-                          accent: ColorPallet.pink,
-                          onTap: () => _launchWhatsApp(context),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: ValorantButton(
+                            label: "LET'S TALK",
+                            variant: ValorantButtonVariant.outline,
+                            accent: ColorPallet.pink,
+                            onTap: () => _launchWhatsApp(context),
+                          ),
                         ),
-                      ),
-                    ],
-                  );
-          },
-        ),
+                      ],
+                    );
+            },
+          ),
 
-        const SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-        // ✅ Social buttons wrap on small screens
-        Wrap(
-          alignment: isCompact ? WrapAlignment.center : WrapAlignment.start,
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            SocialIconButton(
-              icon: Icons.linked_camera,
-              tooltip: "LinkedIn",
-              accent: ColorPallet.skyColor,
-              onTap: () => launchCustomUr(
-                  context: context,
-                  url: "https://www.linkedin.com/in/your-link"),
-            ),
-            SocialIconButton(
-              icon: Icons.code,
-              tooltip: "GitHub",
-              accent: ColorPallet.white,
-              onTap: () => launchCustomUr(
-                  context: context, url: "https://github.com/Waheed-Ashraf"),
-            ),
-            SocialIconButton(
-              icon: Icons.alternate_email,
-              tooltip: "Email",
-              accent: ColorPallet.pink,
-              onTap: () => launchCustomUr(
-                  context: context, url: "mailto:washraf124@gmail.com"),
-            ),
-            SocialIconButton(
-              icon: Icons.language,
-              tooltip: "Website",
-              accent: ColorPallet.darkSky,
-              onTap: () => launchCustomUr(
-                  context: context, url: "https://your-website.com"),
-            ),
-          ],
-        ),
-      ],
+          // ✅ Social buttons wrap on small screens
+          Wrap(
+            alignment: isCompact ? WrapAlignment.center : WrapAlignment.start,
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              SocialIconButton(
+                icon: Icons.linked_camera,
+                tooltip: "LinkedIn",
+                accent: ColorPallet.skyColor,
+                onTap: () => launchCustomUr(
+                    context: context,
+                    url: "https://www.linkedin.com/in/your-link"),
+              ),
+              SocialIconButton(
+                icon: Icons.code,
+                tooltip: "GitHub",
+                accent: ColorPallet.white,
+                onTap: () => launchCustomUr(
+                    context: context, url: "https://github.com/Waheed-Ashraf"),
+              ),
+              SocialIconButton(
+                icon: Icons.alternate_email,
+                tooltip: "Email",
+                accent: ColorPallet.pink,
+                onTap: () => launchCustomUr(
+                    context: context, url: "mailto:washraf124@gmail.com"),
+              ),
+              SocialIconButton(
+                icon: Icons.language,
+                tooltip: "Website",
+                accent: ColorPallet.darkSky,
+                onTap: () => launchCustomUr(
+                    context: context, url: "https://your-website.com"),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 

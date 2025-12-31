@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
+import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/features/home/presentation/views/widgets/adaptive_layout.dart';
 import 'package:portfolio/features/home/presentation/views/widgets/desktop_layout.dart';
 import 'package:portfolio/features/home/presentation/views/widgets/mobile_layout.dart';
@@ -14,8 +15,28 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
+  MobileSectionKeys? _mobileKeys;
+
+  Future<void> _scrollTo(GlobalKey key) async {
+    final ctx = key.currentContext;
+    if (ctx == null) return;
+
+    if (scaffoldKey.currentState?.isDrawerOpen ?? false) {
+      Navigator.of(context).pop();
+    }
+
+    await Scrollable.ensureVisible(
+      ctx,
+      duration: const Duration(milliseconds: 650),
+      curve: Curves.easeInOutCubic,
+      alignment: 0.08,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.sizeOf(context).width < 800;
+
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -27,7 +48,8 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.transparent,
-        appBar: MediaQuery.sizeOf(context).width < 800
+        drawer: isMobile ? buildDrawer() : null,
+        appBar: isMobile
             ? AppBar(
                 elevation: 0,
                 backgroundColor: Colors.transparent,
@@ -38,8 +60,56 @@ class _HomeViewState extends State<HomeView> {
               )
             : null,
         body: AdaptiveLayout(
-          mobileLayout: (context) => const MobileLayout(),
+          mobileLayout: (context) => MobileLayout(
+            onSectionKeysReady: (keys) => _mobileKeys = keys,
+          ),
           desktopLayout: (context) => const DesktopLayout(),
+        ),
+      ),
+    );
+  }
+
+  Widget buildDrawer() {
+    final keys = _mobileKeys;
+
+    return Drawer(
+      backgroundColor: ColorPallet.mainPirpel.withValues(alpha: 0.95),
+      child: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          children: [
+            const SizedBox(height: 6),
+            ListTile(
+              title:
+                  const Text("About Me", style: TextStyle(color: Colors.white)),
+              onTap: keys == null ? null : () => _scrollTo(keys.about),
+            ),
+            ListTile(
+              title: const Text("Education & Certifications",
+                  style: TextStyle(color: Colors.white)),
+              onTap: keys == null ? null : () => _scrollTo(keys.education),
+            ),
+            ListTile(
+              title:
+                  const Text("Projects", style: TextStyle(color: Colors.white)),
+              onTap: keys == null ? null : () => _scrollTo(keys.projects),
+            ),
+            ListTile(
+              title:
+                  const Text("Skills", style: TextStyle(color: Colors.white)),
+              onTap: keys == null ? null : () => _scrollTo(keys.skills),
+            ),
+            ListTile(
+              title:
+                  const Text("Services", style: TextStyle(color: Colors.white)),
+              onTap: keys == null ? null : () => _scrollTo(keys.services),
+            ),
+            ListTile(
+              title:
+                  const Text("GitHub", style: TextStyle(color: Colors.white)),
+              onTap: keys == null ? null : () => _scrollTo(keys.github),
+            ),
+          ],
         ),
       ),
     );
