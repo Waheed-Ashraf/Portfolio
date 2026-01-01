@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
+import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/core/utils/launch_url.dart';
 import 'package:portfolio/core/widgets/custom_button.dart';
 import 'package:portfolio/core/widgets/snak_bar.dart';
+import 'package:portfolio/features/home/data/models/social_link_model.dart';
 import 'package:portfolio/features/home/presentation/views/widgets/about_widgets/social_icon_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -77,7 +79,7 @@ class AboutText extends StatelessWidget {
 
           const SizedBox(height: 24),
 
-          // ✅ Buttons: on small screens -> Column, otherwise Row
+          //  Buttons: on small screens -> Column, otherwise Row
           LayoutBuilder(
             builder: (context, c) {
               final stackButtons = c.maxWidth < 420;
@@ -130,58 +132,18 @@ class AboutText extends StatelessWidget {
           ),
 
           const SizedBox(height: 20),
-
-          // ✅ Social buttons wrap on small screens
-          Wrap(
-            alignment: isCompact ? WrapAlignment.center : WrapAlignment.start,
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              SocialIconButton(
-                icon: Icons.linked_camera,
-                tooltip: "LinkedIn",
-                accent: ColorPallet.skyColor,
-                onTap: () => launchCustomUr(
-                    context: context,
-                    url: "https://www.linkedin.com/in/your-link"),
-              ),
-              SocialIconButton(
-                icon: Icons.code,
-                tooltip: "GitHub",
-                accent: ColorPallet.white,
-                onTap: () => launchCustomUr(
-                    context: context, url: "https://github.com/Waheed-Ashraf"),
-              ),
-              SocialIconButton(
-                icon: Icons.alternate_email,
-                tooltip: "Email",
-                accent: ColorPallet.pink,
-                onTap: () => launchCustomUr(
-                    context: context, url: "mailto:washraf124@gmail.com"),
-              ),
-              SocialIconButton(
-                icon: Icons.language,
-                tooltip: "Website",
-                accent: ColorPallet.darkSky,
-                onTap: () => launchCustomUr(
-                    context: context, url: "https://your-website.com"),
-              ),
-            ],
-          ),
+          SocialLinksRow(isCompact: isCompact),
         ],
       ),
     );
   }
-
-  final String cvUrl =
-      'https://drive.google.com/uc?export=download&id=1eD_WE-uRSn-YXKv4KLl_9FVWIt_wQCuZ';
 
   Future<void> _downloadCV(BuildContext context) async {
     try {
       if (!kIsWeb && (io.Platform.isAndroid || io.Platform.isIOS)) {
         // Mobile platforms
         final directory = await getApplicationDocumentsDirectory();
-        final filePath = '${directory.path}/your-cv.pdf';
+        final filePath = '${directory.path}/Waheed-Ashraf-cv.pdf';
         final dio = Dio();
         await dio.download(cvUrl, filePath);
 
@@ -214,13 +176,6 @@ class AboutText extends StatelessWidget {
   }
 
   Future<void> _launchWhatsApp(BuildContext context) async {
-    const String phoneNumber = '201095994970';
-    const String message = 'Hello, I am interested in your work!';
-    final String whatsappUrlMobile =
-        'whatsapp://send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}';
-    final String whatsappUrlWeb =
-        'https://api.whatsapp.com/send/?phone=$phoneNumber&text=${Uri.encodeComponent(message)}';
-
     try {
       if (kIsWeb) {
         html.window.open(whatsappUrlWeb, 'new tab');
@@ -241,5 +196,28 @@ class AboutText extends StatelessWidget {
         ),
       );
     }
+  }
+}
+
+class SocialLinksRow extends StatelessWidget {
+  const SocialLinksRow({super.key, required this.isCompact});
+
+  final bool isCompact;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      alignment: isCompact ? WrapAlignment.center : WrapAlignment.start,
+      spacing: 10,
+      runSpacing: 10,
+      children: socialLinks.map((item) {
+        return SocialIconButton(
+          socialLogo: item.socialLogo,
+          tooltip: item.tooltip,
+          accent: item.accent,
+          onTap: () => launchCustomUr(context: context, url: item.url),
+        );
+      }).toList(),
+    );
   }
 }

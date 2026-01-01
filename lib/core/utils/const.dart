@@ -23,3 +23,11 @@ class MobileSectionKeys {
 }
 
 const String githubUsername = "Waheed-Ashraf";
+const String phoneNumber = '201095994970';
+const String message = 'Hello, I am interested in your work!';
+final String whatsappUrlMobile =
+    'whatsapp://send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}';
+final String whatsappUrlWeb =
+    'https://api.whatsapp.com/send/?phone=$phoneNumber&text=${Uri.encodeComponent(message)}';
+const String cvUrl =
+    'https://drive.google.com/uc?export=download&id=1eD_WE-uRSn-YXKv4KLl_9FVWIt_wQCuZ';

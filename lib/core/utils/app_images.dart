@@ -28,4 +28,10 @@ class Assets {
   static const String quickDrawSkinTone1 =
       "assets/images/QuickDraw_SkinTone1.png";
   static const String yoloBadge = "assets/images/YOLO_Badge.png";
+
+  static const String facebook = "assets/images/facebook.svg";
+  static const String instagram = "assets/images/instagram.svg";
+  static const String linkedin = "assets/images/linkedin.svg";
+  static const String youtube = "assets/images/youtube.svg";
+  static const String gmail = "assets/images/gmail.svg";
 }

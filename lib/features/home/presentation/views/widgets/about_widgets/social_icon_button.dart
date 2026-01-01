@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 
 class SocialIconButton extends StatefulWidget {
   const SocialIconButton({
     super.key,
-    required this.icon,
+    required this.socialLogo,
     required this.onTap,
     this.accent,
     this.tooltip,
   });
 
-  final IconData icon;
+  final String socialLogo;
   final VoidCallback onTap;
   final Color? accent;
   final String? tooltip;
@@ -56,10 +57,12 @@ class _SocialIconButtonState extends State<SocialIconButton> {
                   ]
                 : [],
           ),
-          child: Icon(
-            widget.icon,
-            size: 20,
-            color: ColorPallet.white.withValues(alpha: 0.92),
+          child: Center(
+            child: SvgPicture.asset(
+              widget.socialLogo,
+              width: 20,
+              height: 20,
+            ),
           ),
         ),
       ),

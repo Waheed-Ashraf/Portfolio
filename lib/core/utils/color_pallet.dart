@@ -9,4 +9,6 @@ class ColorPallet {
   static const Color pink = Color(0xFFC115E6);
   static const Color lightPink = Color(0xFFB96EC9);
   static const Color white = Color(0xffffffff);
+  static const Color blue = Color(0xFF0000FF);
+  static const Color red = Color(0xFFC115E6);
 }
