@@ -88,8 +88,8 @@ const projectsList = <ProjectModel>[
     ],
   ),
   ProjectModel(
-    title: "CraftScene",
-    imageAsset: Assets.craftsceneLogo,
+    title: "AlfaCure",
+    imageAsset: Assets.alfaCure,
     description:
         "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
     tags: ["Flutter", "Laravel", "AWS"],
@@ -107,8 +107,122 @@ const projectsList = <ProjectModel>[
     ],
   ),
   ProjectModel(
-    title: "CraftScene",
-    imageAsset: Assets.craftsceneLogo,
+    title: "Doc Engine",
+    imageAsset: Assets.doceEngineLogo,
+    description:
+        "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
+    tags: ["Flutter", "Laravel", "AWS"],
+    links: [
+      ProjectLink(
+          type: ProjectLinkType.googlePlay,
+          url:
+              "https://play.google.com/store/apps/details?id=com.app.craftscene"),
+      ProjectLink(
+          type: ProjectLinkType.appStore,
+          url:
+              "https://apps.apple.com/eg/app/%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B3%D9%8A%D9%86/id6738144005?l=en"),
+      ProjectLink(
+          type: ProjectLinkType.website, url: "https://www.craftsceneapp.com/"),
+    ],
+  ),
+  ProjectModel(
+    title: "FarMedia",
+    imageAsset: Assets.farmediaLogo,
+    description:
+        "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
+    tags: ["Flutter", "Laravel", "AWS"],
+    links: [
+      ProjectLink(
+          type: ProjectLinkType.googlePlay,
+          url:
+              "https://play.google.com/store/apps/details?id=com.app.craftscene"),
+      ProjectLink(
+          type: ProjectLinkType.appStore,
+          url:
+              "https://apps.apple.com/eg/app/%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B3%D9%8A%D9%86/id6738144005?l=en"),
+      ProjectLink(
+          type: ProjectLinkType.website, url: "https://www.craftsceneapp.com/"),
+    ],
+  ),
+  ProjectModel(
+    title: "HR Engine For Employee",
+    imageAsset: Assets.hrEngineForEmployeeLogo,
+    description:
+        "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
+    tags: ["Flutter", "Laravel", "AWS"],
+    links: [
+      ProjectLink(
+          type: ProjectLinkType.googlePlay,
+          url:
+              "https://play.google.com/store/apps/details?id=com.app.craftscene"),
+      ProjectLink(
+          type: ProjectLinkType.appStore,
+          url:
+              "https://apps.apple.com/eg/app/%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B3%D9%8A%D9%86/id6738144005?l=en"),
+      ProjectLink(
+          type: ProjectLinkType.website, url: "https://www.craftsceneapp.com/"),
+    ],
+  ),
+  ProjectModel(
+    title: "Twassol",
+    imageAsset: Assets.twassolLogo,
+    description:
+        "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
+    tags: ["Flutter", "Laravel", "AWS"],
+    links: [
+      ProjectLink(
+          type: ProjectLinkType.googlePlay,
+          url:
+              "https://play.google.com/store/apps/details?id=com.app.craftscene"),
+      ProjectLink(
+          type: ProjectLinkType.appStore,
+          url:
+              "https://apps.apple.com/eg/app/%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B3%D9%8A%D9%86/id6738144005?l=en"),
+      ProjectLink(
+          type: ProjectLinkType.website, url: "https://www.craftsceneapp.com/"),
+    ],
+  ),
+  ProjectModel(
+    title: "Pets App",
+    imageAsset: Assets.petsAppLogo,
+    description:
+        "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
+    tags: ["Flutter", "Laravel", "AWS"],
+    links: [
+      ProjectLink(
+          type: ProjectLinkType.googlePlay,
+          url:
+              "https://play.google.com/store/apps/details?id=com.app.craftscene"),
+      ProjectLink(
+          type: ProjectLinkType.appStore,
+          url:
+              "https://apps.apple.com/eg/app/%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B3%D9%8A%D9%86/id6738144005?l=en"),
+      ProjectLink(
+          type: ProjectLinkType.website, url: "https://www.craftsceneapp.com/"),
+    ],
+  ),
+  ProjectModel(
+    title: "Cook It",
+    imageAsset: Assets.cookItLogo,
+    description:
+        "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
+    tags: ["Flutter", "Laravel", "AWS"],
+    links: [
+      ProjectLink(
+          type: ProjectLinkType.googlePlay,
+          url:
+              "https://play.google.com/store/apps/details?id=com.app.craftscene"),
+      ProjectLink(
+          type: ProjectLinkType.appStore,
+          url:
+              "https://apps.apple.com/eg/app/%D9%83%D8%B1%D8%A7%D9%81%D8%AA-%D8%B3%D9%8A%D9%86/id6738144005?l=en"),
+      ProjectLink(
+          type: ProjectLinkType.website, url: "https://www.craftsceneapp.com/"),
+    ],
+  ),
+  ProjectModel(
+    title: "Second Home",
+    imageAsset: Assets.secondHomeLogo,
     description:
         "Marketplace & service platform with RFQ/RFP flows, notifications, and dashboards.",
     tags: ["Flutter", "Laravel", "AWS"],
