@@ -73086,7 +73086,7 @@ ti(a){return this.YN(a)},
 YN(a){var s=0,r=A.U(t.H),q,p,o,n
 var $async$ti=A.V(function(b,c){if(b===1)return A.R(c,r)
 while(true)switch(s){case 0:try{o=document.createElement("a")
-o.href="https://drive.google.com/uc?export=download&id=1eD_WE-uRSn-YXKv4KLl_9FVWIt_wQCuZ"
+o.href="https://drive.google.com/uc?export=download&id=11Gm1G0-LCktaWwW-FFgnt_-V3vKSesdv"
 q=o
 q.download="Waheed Ashraf resume"
 J.aAJ(q)
