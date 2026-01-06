@@ -1,43 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
-import 'package:portfolio/modules/home/data/models/app_bar_item_model.dart';
 
-class AppBarButton extends StatelessWidget {
+class AppBarButton extends StatefulWidget {
   const AppBarButton({
-    required this.isActive,
     super.key,
-    required this.appBarItemModel,
+    required this.title,
+    required this.onTap,
   });
-  final bool isActive;
-  final AppBarItemModel appBarItemModel;
+
+  final String title;
+  final VoidCallback onTap;
+
+  @override
+  State<AppBarButton> createState() => _AppBarButtonState();
+}
+
+class _AppBarButtonState extends State<AppBarButton> {
+  bool hovered = false;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Expanded(
-            child: SizedBox(
-          height: 4,
-        )),
-        Text(
-          appBarItemModel.itemName,
-          style: isActive
-              ? AppStyles.styleBold16(context)
-              : AppStyles.styleSemiBold16(context)
-                  .copyWith(color: ColorPallet.darkSky),
+    final color = hovered
+        ? ColorPallet.skyColor
+        : ColorPallet.white.withValues(alpha: 0.85);
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => hovered = true),
+      onExit: (_) => setState(() => hovered = false),
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 160),
+                style: AppStyles.styleSemiBold16(context).copyWith(
+                  color: color,
+                ),
+                child: Text(widget.title),
+              ),
+              const SizedBox(height: 6),
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 160),
+                height: 2,
+                width: hovered ? 26 : 0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(99),
+                  color: ColorPallet.skyColor.withValues(alpha: 0.95),
+                ),
+              ),
+            ],
+          ),
         ),
-        const Expanded(
-            child: SizedBox(
-          height: 4,
-        )),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.fastOutSlowIn,
-          height: 3.27,
-          width: isActive ? 35 : 0,
-          color: ColorPallet.darkSky,
-        ),
-      ],
+      ),
     );
   }
 }

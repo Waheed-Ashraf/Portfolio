@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
+import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/core/utils/launch_url.dart';
 import 'package:portfolio/modules/home/data/models/achievment_model.dart';
 import 'package:universal_html/html.dart' as html;
@@ -19,8 +20,6 @@ class GithubActivitySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final graphUrl = "https://ghchart.rshah.org/39d353/$githubUsername";
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40),
       child: Column(
@@ -65,7 +64,7 @@ class GithubActivitySection extends StatelessWidget {
                               720; // readable like GitHub
                           final bool needsScroll = c.maxWidth < fixedGraphWidth;
 
-                          final graph = SizedBox(
+                          const graph = SizedBox(
                             width: fixedGraphWidth,
                             height: 170,
                             child: WebSafeNetworkImage(
@@ -77,7 +76,7 @@ class GithubActivitySection extends StatelessWidget {
 
                           if (!needsScroll) {
                             // Desktop/tablet -> center it nicely
-                            return Align(
+                            return const Align(
                               alignment: Alignment.center,
                               child: graph,
                             );
@@ -93,7 +92,7 @@ class GithubActivitySection extends StatelessWidget {
                               },
                               scrollbars: false,
                             ),
-                            child: SingleChildScrollView(
+                            child: const SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               physics: const BouncingScrollPhysics(),
                               child: graph,
@@ -312,7 +311,6 @@ class _HtmlImgState extends State<_HtmlImg> {
       case BoxFit.fitHeight:
       case BoxFit.fitWidth:
       case BoxFit.contain:
-      default:
         return 'contain';
     }
   }

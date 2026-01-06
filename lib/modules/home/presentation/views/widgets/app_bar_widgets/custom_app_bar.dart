@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/utils/app_styles.dart';
-import 'package:portfolio/core/utils/color_pallet.dart';
+
+import 'package:portfolio/modules/home/presentation/views/widgets/app_bar_widgets/app_logo.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/app_bar_widgets/custom_app_bar_list.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -24,16 +24,15 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.only(
+        top: 8.0,
+        right: 24,
+        left: 24,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            "App logo",
-            style: AppStyles.styleBold20(context)
-                .copyWith(color: ColorPallet.darkSky),
-          ),
+          const AppLogo(),
           const Expanded(child: SizedBox(width: 8)),
           CustomAppBarList(
             onTapAbout: onTapAbout,

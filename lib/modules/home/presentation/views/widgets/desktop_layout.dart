@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_styles.dart';
+import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/const.dart';
 
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/about_section.dart';
@@ -53,8 +55,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
         controller: _scrollController,
         slivers: [
           SliverAppBar(
-            backgroundColor: Colors.transparent,
-            pinned: false,
+            floating: true,
             flexibleSpace: FlexibleSpaceBar(
               background: CustomAppBar(
                 onTapAbout: () => _scrollTo(_aboutKey),

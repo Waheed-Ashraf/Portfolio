@@ -91,6 +91,14 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle styleBold12(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontFamily: 'Comfortaa',
+      fontWeight: FontWeight.w900,
+    );
+  }
+
   static TextStyle styleSemiBold18(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 18),
@@ -103,6 +111,16 @@ abstract class AppStyles {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 34),
       fontFamily: 'Comfortaa',
+      fontWeight: FontWeight.w700,
+      letterSpacing: 0.4,
+      height: 1.2,
+    );
+  }
+
+  static TextStyle styleLogo(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontFamily: 'Caveat',
       fontWeight: FontWeight.w700,
       letterSpacing: 0.4,
       height: 1.2,

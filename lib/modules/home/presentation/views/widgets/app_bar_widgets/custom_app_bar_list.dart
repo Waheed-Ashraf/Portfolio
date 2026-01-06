@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/modules/home/data/models/app_bar_item_model.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/app_bar_widgets/app_bar_text_button.dart';
 
-class CustomAppBarList extends StatefulWidget {
+class CustomAppBarList extends StatelessWidget {
   const CustomAppBarList({
     super.key,
     required this.onTapAbout,
@@ -21,51 +20,17 @@ class CustomAppBarList extends StatefulWidget {
   final VoidCallback onTapGithub;
 
   @override
-  State<CustomAppBarList> createState() => _CustomAppBarListState();
-}
-
-class _CustomAppBarListState extends State<CustomAppBarList> {
-  late final List<AppBarItemModel> appBarData;
-
-  int currentIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    appBarData = [
-      AppBarItemModel(itemName: "About Me", onTap: widget.onTapAbout),
-      AppBarItemModel(
-          itemName: "Education & Certifications", onTap: widget.onTapEducation),
-      AppBarItemModel(itemName: "Projects", onTap: widget.onTapProjects),
-      AppBarItemModel(itemName: "Skills", onTap: widget.onTapSkills),
-      AppBarItemModel(itemName: "Services", onTap: widget.onTapServices),
-      AppBarItemModel(itemName: "GitHub", onTap: widget.onTapGithub),
-    ];
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Row(
-      children: appBarData.asMap().entries.map((e) {
-        final index = e.key;
-        final item = e.value;
-
-        return GestureDetector(
-          onTap: () {
-            if (currentIndex != index) {
-              setState(() => currentIndex = index);
-            }
-            item.onTap();
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: AppBarButton(
-              isActive: currentIndex == index,
-              appBarItemModel: item,
-            ),
-          ),
-        );
-      }).toList(),
+      children: [
+        AppBarButton(title: "About Me", onTap: onTapAbout),
+        AppBarButton(
+            title: "Education & Certifications", onTap: onTapEducation),
+        AppBarButton(title: "Projects", onTap: onTapProjects),
+        AppBarButton(title: "Skills", onTap: onTapSkills),
+        AppBarButton(title: "Services", onTap: onTapServices),
+        AppBarButton(title: "GitHub", onTap: onTapGithub),
+      ],
     );
   }
 }
