@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
-import 'package:portfolio/features/home/data/models/app_bar_item_model.dart';
+import 'package:portfolio/modules/home/data/models/app_bar_item_model.dart';
 
 class AppBarButton extends StatelessWidget {
   const AppBarButton({

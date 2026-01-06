@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
-import 'package:portfolio/features/home/data/models/education_and_courses_model.dart';
+import 'package:portfolio/modules/home/data/models/education_and_courses_model.dart';
 
 class EducationAndCoursesSection extends StatelessWidget {
   const EducationAndCoursesSection({super.key});

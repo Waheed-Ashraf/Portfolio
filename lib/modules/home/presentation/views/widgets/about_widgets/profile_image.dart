@@ -8,7 +8,7 @@ class HomeProfileImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInDownBig(
+    return FadeInDown(
       duration: const Duration(seconds: 2),
       child: SizedBox(
         height: 400,

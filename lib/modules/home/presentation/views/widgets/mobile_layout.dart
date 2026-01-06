@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/const.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/about_widgets/about_section.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/education_and_courses_section/education_and_courses_section.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/footer_section/footer.section.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/github_achievments/git_hub_achievments.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/projects_section/project_section.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/services_section/services_section.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/skilles_section/skilles_section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/about_section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/education_and_courses_section/education_and_courses_section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/footer_section/footer.section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/github_achievments/git_hub_achievments.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/projects_section/project_section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/services_section/services_section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/skilles_section/skilles_section.dart';
 
 class MobileLayout extends StatefulWidget {
   const MobileLayout({

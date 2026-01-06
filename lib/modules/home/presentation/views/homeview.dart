@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/const.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/adaptive_layout.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/desktop_layout.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/mobile_layout.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/adaptive_layout.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/desktop_layout.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/mobile_layout.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

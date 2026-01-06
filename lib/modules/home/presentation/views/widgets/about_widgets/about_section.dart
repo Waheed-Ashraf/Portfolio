@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/about_widgets/about_me_text.dart';
-import 'package:portfolio/features/home/presentation/views/widgets/about_widgets/profile_image.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/about_me_text.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/profile_image.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});

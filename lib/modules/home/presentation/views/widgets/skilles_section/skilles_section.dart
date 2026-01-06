@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
-import 'package:portfolio/features/home/data/models/skills_model.dart';
+import 'package:portfolio/modules/home/data/models/skills_model.dart';
 
 class SkillsSection extends StatefulWidget {
   const SkillsSection({super.key});

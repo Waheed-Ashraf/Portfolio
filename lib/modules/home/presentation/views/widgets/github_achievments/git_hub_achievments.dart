@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/launch_url.dart';
-import 'package:portfolio/features/home/data/models/achievment_model.dart';
+import 'package:portfolio/modules/home/data/models/achievment_model.dart';
 import 'package:universal_html/html.dart' as html;
 
 class GithubActivitySection extends StatelessWidget {
