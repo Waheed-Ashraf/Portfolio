@@ -49,4 +49,6 @@ class Assets {
   static const String petsAppLogo = "assets/images/PetsAppLogo.png";
   static const String twassolLogo = "assets/images/twassol.png";
   static const String secondHomeLogo = "assets/images/secondHome.png";
+
+  static const String menuIcon = "assets/images/menu.svg";
 }

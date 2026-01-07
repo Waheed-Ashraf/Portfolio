@@ -27,10 +27,10 @@ class GithubActivitySection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 40.0),
+            padding: const EdgeInsets.only(left: 24.0),
             child: Text(
               "GitHub Achievements & Activity",
-              style: AppStyles.styleSectionTitle(context).copyWith(
+              style: AppStyles.styleSemiBold24(context).copyWith(
                 color: ColorPallet.white,
                 shadows: AppStyles.sectionTitleShadow(),
               ),
@@ -41,7 +41,7 @@ class GithubActivitySection extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: _GlassCard(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // -----------------------
                   // Contributions

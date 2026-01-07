@@ -16,10 +16,10 @@ class ProjectsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 40.0),
+            padding: const EdgeInsets.only(left: 24.0),
             child: Text(
               "Projects",
-              style: AppStyles.styleSectionTitle(context).copyWith(
+              style: AppStyles.styleSemiBold24(context).copyWith(
                 color: ColorPallet.white,
                 shadows: AppStyles.sectionTitleShadow(),
               ),

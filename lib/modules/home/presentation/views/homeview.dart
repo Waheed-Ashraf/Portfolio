@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/core/utils/app_images.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/adaptive_layout.dart';
@@ -55,7 +57,11 @@ class _HomeViewState extends State<HomeView> {
                 backgroundColor: Colors.transparent,
                 leading: IconButton(
                   onPressed: () => scaffoldKey.currentState!.openDrawer(),
-                  icon: const Icon(Icons.menu),
+                  icon: SvgPicture.asset(Assets.menuIcon,
+                      colorFilter: const ColorFilter.mode(
+                          ColorPallet.white, BlendMode.srcIn),
+                      width: 28,
+                      height: 28),
                 ),
               )
             : null,

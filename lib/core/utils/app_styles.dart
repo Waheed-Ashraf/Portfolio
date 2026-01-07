@@ -107,15 +107,15 @@ abstract class AppStyles {
     );
   }
 
-  static TextStyle styleSectionTitle(BuildContext context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 34),
-      fontFamily: 'Comfortaa',
-      fontWeight: FontWeight.w700,
-      letterSpacing: 0.4,
-      height: 1.2,
-    );
-  }
+  // static TextStyle styleSectionTitle(BuildContext context) {
+  //   return TextStyle(
+  //     fontSize: getResponsiveFontSize(context, fontSize: 24),
+  //     fontFamily: 'Comfortaa',
+  //     fontWeight: FontWeight.w700,
+  //     letterSpacing: 0.4,
+  //     height: 1.2,
+  //   );
+  // }
 
   static TextStyle styleLogo(BuildContext context) {
     return TextStyle(
