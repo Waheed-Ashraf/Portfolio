@@ -24,8 +24,7 @@ class CustomAppBarList extends StatelessWidget {
     return Row(
       children: [
         AppBarButton(title: "About Me", onTap: onTapAbout),
-        AppBarButton(
-            title: "Education & Certifications", onTap: onTapEducation),
+        AppBarButton(title: "Education", onTap: onTapEducation),
         AppBarButton(title: "Projects", onTap: onTapProjects),
         AppBarButton(title: "Skills", onTap: onTapSkills),
         AppBarButton(title: "Services", onTap: onTapServices),

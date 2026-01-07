@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'dart:ui';
 import 'dart:ui_web';
 
@@ -60,8 +61,7 @@ class GithubActivitySection extends StatelessWidget {
                       color: ColorPallet.mainPirpel.withValues(alpha: 0.25),
                       child: LayoutBuilder(
                         builder: (context, c) {
-                          const double fixedGraphWidth =
-                              720; // readable like GitHub
+                          const double fixedGraphWidth = 720;
                           final bool needsScroll = c.maxWidth < fixedGraphWidth;
 
                           const graph = SizedBox(
@@ -94,7 +94,7 @@ class GithubActivitySection extends StatelessWidget {
                             ),
                             child: const SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
-                              physics: const BouncingScrollPhysics(),
+                              physics: BouncingScrollPhysics(),
                               child: graph,
                             ),
                           );
@@ -107,7 +107,6 @@ class GithubActivitySection extends StatelessWidget {
 
                   // -----------------------
                   // Achievements
-                  // -----------------------
                   Text(
                     "Achievements",
                     style: AppStyles.styleSemiBold16(context).copyWith(
@@ -116,43 +115,40 @@ class GithubActivitySection extends StatelessWidget {
                   ),
                   const SizedBox(height: 14),
 
-                  SizedBox(
-                    height: 150,
-                    child: ScrollConfiguration(
-                      behavior: ScrollConfiguration.of(context).copyWith(
-                        dragDevices: {
-                          PointerDeviceKind.mouse,
-                          PointerDeviceKind.touch,
-                          PointerDeviceKind.trackpad,
-                        },
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        physics: const BouncingScrollPhysics(),
-                        child: Row(
+                  (MediaQuery.widthOf(context) >= 800)
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 4,
                           children: [
-                            for (int i = 0; i < achievements.length; i++) ...[
+                            for (final a in achievements)
                               SizedBox(
                                 width: 150,
+                                height: 150,
                                 child: GestureDetector(
-                                  onTap: achievements[i].url == null
+                                  onTap: a.url == null
                                       ? null
                                       : () => launchCustomUr(
-                                            context: context,
-                                            url: achievements[i].url!,
-                                          ),
-                                  child:
-                                      _AchievementCard(model: achievements[i]),
+                                          context: context, url: a.url!),
+                                  child: _AchievementCard(model: a),
                                 ),
                               ),
-                              if (i != achievements.length - 1)
-                                const SizedBox(width: 14),
-                            ],
+                          ],
+                        )
+                      : Row(
+                          spacing: 4,
+                          children: [
+                            for (final a in achievements)
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: a.url == null
+                                      ? null
+                                      : () => launchCustomUr(
+                                          context: context, url: a.url!),
+                                  child: _AchievementCard(model: a),
+                                ),
+                              ),
                           ],
                         ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
