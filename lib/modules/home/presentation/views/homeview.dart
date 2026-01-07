@@ -4,6 +4,7 @@ import 'package:portfolio/core/utils/app_images.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/adaptive_layout.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/app_bar_widgets/app_logo.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/desktop_layout.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/mobile_layout.dart';
 
@@ -62,6 +63,15 @@ class _HomeViewState extends State<HomeView> {
                           ColorPallet.white, BlendMode.srcIn),
                       width: 28,
                       height: 28),
+                ),
+                centerTitle: true,
+                title: const Column(
+                  children: [
+                    SizedBox(
+                      height: 8,
+                    ),
+                    AppLogo(),
+                  ],
                 ),
               )
             : null,
