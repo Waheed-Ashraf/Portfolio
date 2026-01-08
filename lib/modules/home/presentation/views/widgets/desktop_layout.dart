@@ -49,37 +49,34 @@ class _DesktopLayoutState extends State<DesktopLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          SliverAppBar(
-            floating: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: CustomAppBar(
-                onTapAbout: () => _scrollTo(_aboutKey),
-                onTapEducation: () => _scrollTo(_eduKey),
-                onTapProjects: () => _scrollTo(_projectsKey),
-                onTapSkills: () => _scrollTo(_skillsKey),
-                onTapServices: () => _scrollTo(_servicesKey),
-                onTapGithub: () => _scrollTo(_githubKey),
-              ),
+    return CustomScrollView(
+      controller: _scrollController,
+      slivers: [
+        SliverAppBar(
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(
+            background: CustomAppBar(
+              onTapAbout: () => _scrollTo(_aboutKey),
+              onTapEducation: () => _scrollTo(_eduKey),
+              onTapProjects: () => _scrollTo(_projectsKey),
+              onTapSkills: () => _scrollTo(_skillsKey),
+              onTapServices: () => _scrollTo(_servicesKey),
+              onTapGithub: () => _scrollTo(_githubKey),
             ),
           ),
-          SliverToBoxAdapter(key: _aboutKey, child: const AboutSection()),
-          SliverToBoxAdapter(
-              key: _eduKey, child: const EducationAndCoursesSection()),
-          SliverToBoxAdapter(key: _projectsKey, child: const ProjectsSection()),
-          SliverToBoxAdapter(key: _skillsKey, child: const SkillsSection()),
-          SliverToBoxAdapter(key: _servicesKey, child: const ServicesSection()),
-          SliverToBoxAdapter(
-            key: _githubKey,
-            child: const GithubActivitySection(githubUsername: githubUsername),
-          ),
-          SliverToBoxAdapter(key: _footerKey, child: const FooterSection()),
-        ],
-      ),
+        ),
+        SliverToBoxAdapter(key: _aboutKey, child: const AboutSection()),
+        SliverToBoxAdapter(
+            key: _eduKey, child: const EducationAndCoursesSection()),
+        SliverToBoxAdapter(key: _projectsKey, child: const ProjectsSection()),
+        SliverToBoxAdapter(key: _skillsKey, child: const SkillsSection()),
+        SliverToBoxAdapter(key: _servicesKey, child: const ServicesSection()),
+        SliverToBoxAdapter(
+          key: _githubKey,
+          child: const GithubActivitySection(githubUsername: githubUsername),
+        ),
+        SliverToBoxAdapter(key: _footerKey, child: const FooterSection()),
+      ],
     );
   }
 }

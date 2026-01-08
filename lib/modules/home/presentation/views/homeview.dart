@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/core/utils/app_images.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
@@ -21,19 +22,36 @@ class _HomeViewState extends State<HomeView> {
   MobileSectionKeys? _mobileKeys;
 
   Future<void> _scrollTo(GlobalKey key) async {
+    final keys = _mobileKeys;
+    if (keys == null) return;
+
     final ctx = key.currentContext;
     if (ctx == null) return;
 
+    // Close drawer first (important on web too)
     if (scaffoldKey.currentState?.isDrawerOpen ?? false) {
       Navigator.of(context).pop();
     }
 
-    await Scrollable.ensureVisible(
-      ctx,
-      duration: const Duration(milliseconds: 650),
-      curve: Curves.easeInOutCubic,
-      alignment: 0.08,
-    );
+    // Wait a frame so drawer closes & layout stabilizes
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final renderObject = ctx.findRenderObject();
+      if (renderObject == null) return;
+
+      final viewport = RenderAbstractViewport.of(renderObject);
+      if (viewport == null) return;
+
+      final targetOffset = viewport.getOffsetToReveal(renderObject, 0.0).offset;
+
+      keys.scrollController.animateTo(
+        (targetOffset - 80).clamp(
+          0.0,
+          keys.scrollController.position.maxScrollExtent,
+        ),
+        duration: const Duration(milliseconds: 650),
+        curve: Curves.easeInOutCubic,
+      );
+    });
   }
 
   @override

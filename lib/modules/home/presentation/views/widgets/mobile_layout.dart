@@ -62,24 +62,21 @@ class _MobileLayoutState extends State<MobileLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          SliverToBoxAdapter(key: _aboutKey, child: const AboutSection()),
-          SliverToBoxAdapter(
-              key: _eduKey, child: const EducationAndCoursesSection()),
-          SliverToBoxAdapter(key: _projectsKey, child: const ProjectsSection()),
-          SliverToBoxAdapter(key: _skillsKey, child: const SkillsSection()),
-          SliverToBoxAdapter(key: _servicesKey, child: const ServicesSection()),
-          SliverToBoxAdapter(
-            key: _githubKey,
-            child: const GithubActivitySection(githubUsername: githubUsername),
-          ),
-          SliverToBoxAdapter(key: _footerKey, child: const FooterSection()),
-        ],
-      ),
+    return CustomScrollView(
+      controller: _scrollController,
+      slivers: [
+        SliverToBoxAdapter(key: _aboutKey, child: const AboutSection()),
+        SliverToBoxAdapter(
+            key: _eduKey, child: const EducationAndCoursesSection()),
+        SliverToBoxAdapter(key: _projectsKey, child: const ProjectsSection()),
+        SliverToBoxAdapter(key: _skillsKey, child: const SkillsSection()),
+        SliverToBoxAdapter(key: _servicesKey, child: const ServicesSection()),
+        SliverToBoxAdapter(
+          key: _githubKey,
+          child: const GithubActivitySection(githubUsername: githubUsername),
+        ),
+        SliverToBoxAdapter(key: _footerKey, child: const FooterSection()),
+      ],
     );
   }
 }
