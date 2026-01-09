@@ -34,10 +34,7 @@ class AboutText extends StatelessWidget {
               Text("Hi There!", style: AppStyles.styleBold20(context)),
               Text("It's Waheed Ashraf,",
                   style: AppStyles.styleBold20(context)),
-
               const SizedBox(height: 8),
-
-              // ✅ Replace Row with Wrap to avoid overflow on small screens
               Wrap(
                 alignment:
                     isCompact ? WrapAlignment.center : WrapAlignment.start,
@@ -68,9 +65,7 @@ class AboutText extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 16),
-
               Text(
                 "Excited to connect with like-minded professionals, potential collaborators, and anyone interested in my work. Whether you have a question about one of my projects, want to discuss potential opportunities, or just want to say hello, feel free to reach out. Your feedback and inquiries are always welcome.",
                 textAlign: isCompact ? TextAlign.center : TextAlign.start,
@@ -80,10 +75,7 @@ class AboutText extends StatelessWidget {
             ],
           ),
         ),
-
         const SizedBox(height: 24),
-
-        //  Buttons: on small screens -> Column, otherwise Row
         LayoutBuilder(
           builder: (context, c) {
             final stackButtons = c.maxWidth < 420;
@@ -144,7 +136,6 @@ class AboutText extends StatelessWidget {
                   );
           },
         ),
-
         const SizedBox(height: 20),
         FadeInUpBig(
             duration: const Duration(seconds: 2),
