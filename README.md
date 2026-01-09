@@ -65,8 +65,7 @@ lib/
 │       │       └── homeview.dart
 │
 └── main.dart
-txt```
-
+```
 <!-- =========================
      Flutter Portfolio Documentation (HTML)
      Copy-paste ready for README.html or docs page
