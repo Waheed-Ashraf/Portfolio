@@ -181,7 +181,7 @@ assets/icons/</code></pre>
   <h2>👨‍💻 Author</h2>
   <p>
     <strong>Waheed Ashraf</strong><br />
-    Senior Software Engineer – Flutter &amp; Web
+     Software Engineer – Flutter Developer
   </p>
   <p>
     GitHub: <a href="https://github.com/Waheed-Ashraf" target="_blank" rel="noopener noreferrer">
@@ -206,15 +206,9 @@ assets/icons/</code></pre>
 
   <p>If you like this project, feel free to ⭐ the repository and adapt it for your own use.</p>
 
-  <hr />
 
-  <h2>✨ Optional Enhancements</h2>
-  <p>Want to extend this documentation?</p>
-  <ul>
-    <li>README badges (Flutter, Web, GitHub Pages)</li>
-    <li>Screenshot preview section</li>
-    <li>License section (MIT)</li>
-  </ul>
 
-  <p><strong>👉 Say the word and I’ll add them without breaking copy-paste 👍</strong></p>
+
+
+
 
