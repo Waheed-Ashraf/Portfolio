@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
-import 'package:portfolio/modules/home/data/models/service_model.dart';
+import 'package:portfolio/modules/home/data/data_source/services_data_source.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/services_section/service_card.dart';
 
 class ServicesSection extends StatelessWidget {

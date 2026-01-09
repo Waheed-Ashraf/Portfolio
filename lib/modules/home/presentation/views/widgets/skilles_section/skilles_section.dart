@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
+import 'package:portfolio/modules/home/data/data_source/skills_data_source.dart';
 import 'package:portfolio/modules/home/data/models/skills_model.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/skilles_section/skill_card.dart';
 

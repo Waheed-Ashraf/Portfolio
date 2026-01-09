@@ -4,7 +4,7 @@ import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/core/utils/launch_url.dart';
-import 'package:portfolio/modules/home/data/models/achievment_model.dart';
+import 'package:portfolio/modules/home/data/data_source/achievements_data_source.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/github_achievments/achievments_cards.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/github_achievments/glass_card.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/github_achievments/web_network_image.dart';

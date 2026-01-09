@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
-import 'package:portfolio/modules/home/data/models/education_and_courses_model.dart';
+import 'package:portfolio/modules/home/data/data_source/education_and_courses_data_source.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/education_and_courses_section/education_card.dart';
 
 class EducationAndCoursesSection extends StatelessWidget {

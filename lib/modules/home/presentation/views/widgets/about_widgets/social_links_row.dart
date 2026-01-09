@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/launch_url.dart';
-import 'package:portfolio/modules/home/data/models/social_link_model.dart';
+import 'package:portfolio/modules/home/data/data_source/social_links_data_source.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/social_icon_button.dart';
 
 class SocialLinksRow extends StatelessWidget {
