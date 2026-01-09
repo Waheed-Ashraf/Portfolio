@@ -33,3 +33,5 @@ const String cvUrl =
     'https://drive.google.com/uc?export=download&id=11Gm1G0-LCktaWwW-FFgnt_-V3vKSesdv';
 
 const graphUrl = "https://ghchart.rshah.org/39d353/$githubUsername";
+
+const double breakPoint = 800;

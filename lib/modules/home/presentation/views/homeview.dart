@@ -20,43 +20,34 @@ class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   MobileSectionKeys? _mobileKeys;
-
   Future<void> _scrollTo(GlobalKey key) async {
     final keys = _mobileKeys;
     if (keys == null) return;
 
     final ctx = key.currentContext;
     if (ctx == null) return;
-
-    // Close drawer first (important on web too)
     if (scaffoldKey.currentState?.isDrawerOpen ?? false) {
       Navigator.of(context).pop();
+      await Future.delayed(const Duration(milliseconds: 280));
     }
+    if (!ctx.mounted) return;
+    final renderObject = ctx.findRenderObject();
+    if (renderObject is! RenderObject) return;
 
-    // Wait a frame so drawer closes & layout stabilizes
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final renderObject = ctx.findRenderObject();
-      if (renderObject == null) return;
+    final viewport = RenderAbstractViewport.of(renderObject);
+    final targetOffset = viewport.getOffsetToReveal(renderObject, 0.0).offset;
 
-      final viewport = RenderAbstractViewport.of(renderObject);
-      if (viewport == null) return;
-
-      final targetOffset = viewport.getOffsetToReveal(renderObject, 0.0).offset;
-
-      keys.scrollController.animateTo(
-        (targetOffset - 80).clamp(
-          0.0,
-          keys.scrollController.position.maxScrollExtent,
-        ),
-        duration: const Duration(milliseconds: 650),
-        curve: Curves.easeInOutCubic,
-      );
-    });
+    await keys.scrollController.animateTo(
+      (targetOffset - 80)
+          .clamp(0.0, keys.scrollController.position.maxScrollExtent),
+      duration: const Duration(milliseconds: 650),
+      curve: Curves.easeInOutCubic,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.sizeOf(context).width < 800;
+    final isMobile = MediaQuery.sizeOf(context).width < breakPoint;
 
     return Container(
       decoration: const BoxDecoration(
@@ -95,7 +86,9 @@ class _HomeViewState extends State<HomeView> {
             : null,
         body: AdaptiveLayout(
           mobileLayout: (context) => MobileLayout(
-            onSectionKeysReady: (keys) => _mobileKeys = keys,
+            onSectionKeysReady: (keys) {
+              setState(() => _mobileKeys = keys);
+            },
           ),
           desktopLayout: (context) => const DesktopLayout(),
         ),

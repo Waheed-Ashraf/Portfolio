@@ -5,6 +5,7 @@ import 'package:portfolio/core/helpers/download_file.dart';
 import 'package:portfolio/core/helpers/launch_whats_app.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
+import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/core/widgets/custom_button.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/social_links_row.dart';
 
@@ -13,7 +14,7 @@ class AboutText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isCompact = MediaQuery.sizeOf(context).width < 800; // or < 700
+    final isCompact = MediaQuery.sizeOf(context).width < breakPoint;
 
     return Column(
       mainAxisAlignment:

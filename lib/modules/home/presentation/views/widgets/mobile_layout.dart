@@ -13,8 +13,6 @@ class MobileLayout extends StatefulWidget {
     super.key,
     required this.onSectionKeysReady,
   });
-
-  /// We pass keys to HomeView so Drawer can scroll the same page.
   final void Function(MobileSectionKeys keys) onSectionKeysReady;
 
   @override
@@ -23,8 +21,6 @@ class MobileLayout extends StatefulWidget {
 
 class _MobileLayoutState extends State<MobileLayout> {
   final ScrollController _scrollController = ScrollController();
-
-  // Section keys
   final _aboutKey = GlobalKey();
   final _eduKey = GlobalKey();
   final _projectsKey = GlobalKey();
@@ -36,8 +32,6 @@ class _MobileLayoutState extends State<MobileLayout> {
   @override
   void initState() {
     super.initState();
-
-    // expose keys + controller to HomeView
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.onSectionKeysReady(
         MobileSectionKeys(

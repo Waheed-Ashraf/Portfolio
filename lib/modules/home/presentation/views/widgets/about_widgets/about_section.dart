@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/about_me_text.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/profile_image.dart';
 
@@ -11,7 +12,7 @@ class AboutSection extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, c) {
-        final isSmall = c.maxWidth < 800;
+        final isSmall = c.maxWidth < breakPoint;
 
         return Container(
           constraints: BoxConstraints(minHeight: isSmall ? 0 : h),
