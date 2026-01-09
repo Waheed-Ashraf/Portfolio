@@ -66,17 +66,9 @@ lib/
 │
 └── main.dart
 ```
-<!-- =========================
-     Flutter Portfolio Documentation (HTML)
-     Copy-paste ready for README.html or docs page
-     ========================= -->
 
-<section>
-  <h1>🧑‍💻 Flutter Portfolio – Documentation</h1>
-  <p>
-    A clean, scalable, and fully responsive <strong>Flutter Web portfolio</strong> designed to be easily personalized
-    <strong>without touching UI code</strong>.
-  </p>
+
+
 
   <hr />
 
@@ -225,5 +217,4 @@ assets/icons/</code></pre>
   </ul>
 
   <p><strong>👉 Say the word and I’ll add them without breaking copy-paste 👍</strong></p>
-</section>
 
