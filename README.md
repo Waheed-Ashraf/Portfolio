@@ -65,4 +65,166 @@ lib/
 │       │       └── homeview.dart
 │
 └── main.dart
+txt```
+
+<!-- =========================
+     Flutter Portfolio Documentation (HTML)
+     Copy-paste ready for README.html or docs page
+     ========================= -->
+
+<section>
+  <h1>🧑‍💻 Flutter Portfolio – Documentation</h1>
+  <p>
+    A clean, scalable, and fully responsive <strong>Flutter Web portfolio</strong> designed to be easily personalized
+    <strong>without touching UI code</strong>.
+  </p>
+
+  <hr />
+
+  <h2>🛠️ How to Customize (Very Simple)</h2>
+
+  <h3>1️⃣ Update Personal Information</h3>
+  <p>Edit the following file:</p>
+  <pre><code>lib/core/utils/const.dart</code></pre>
+
+  <p>You can customize:</p>
+  <ul>
+    <li>Name</li>
+    <li>Email</li>
+    <li>WhatsApp number</li>
+    <li>CV URL</li>
+    <li>GitHub username</li>
+    <li>Social links</li>
+  </ul>
+
+  <hr />
+
+  <h3>2️⃣ Update Portfolio Content</h3>
+  <p><strong>Edit data only</strong> (UI updates automatically):</p>
+  <pre><code>lib/modules/home/data/data_source/</code></pre>
+
+  <p>You can update:</p>
+  <ul>
+    <li>Projects</li>
+    <li>Skills</li>
+    <li>Services</li>
+    <li>Education &amp; Courses</li>
+    <li>Achievements</li>
+  </ul>
+
+  <hr />
+
+  <h3>3️⃣ Update Images &amp; Icons</h3>
+  <p>Replace files inside:</p>
+  <pre><code>assets/images/
+assets/icons/</code></pre>
+
+  <p>Then update image paths in:</p>
+  <pre><code>lib/core/utils/app_images.dart</code></pre>
+
+  <hr />
+
+  <h2>📱 Responsive Design</h2>
+  <p>This portfolio is <strong>fully responsive</strong> across all screen sizes:</p>
+  <ul>
+    <li>Desktop</li>
+    <li>Tablets</li>
+    <li>Small screen browsers</li>
+  </ul>
+
+  <h3>Technologies used:</h3>
+  <ul>
+    <li><code>AdaptiveLayout</code></li>
+    <li><code>LayoutBuilder</code></li>
+    <li><code>MediaQuery</code></li>
+  </ul>
+
+  <p>📌 Mobile experience includes <strong>Drawer navigation</strong> with smooth scrolling.</p>
+
+  <hr />
+
+  <h2>🧰 Tech Stack</h2>
+  <ul>
+    <li>Flutter Web</li>
+    <li>Dart</li>
+    <li>animate_do</li>
+    <li>flutter_svg</li>
+    <li>dio</li>
+    <li>GitHub Pages</li>
+  </ul>
+
+  <hr />
+
+  <h2>🚀 Deployment (GitHub Pages)</h2>
+
+  <h3>Build the web project</h3>
+  <pre><code>flutter build web --release --base-href "/Portfolio/"</code></pre>
+
+  <h3>Deploy</h3>
+  <p>Push the contents of:</p>
+  <pre><code>build/web</code></pre>
+
+  <p>To one of the following:</p>
+  <ul>
+    <li><code>gh-pages</code> branch</li>
+    <li><code>/docs</code> folder (configured in GitHub Pages settings)</li>
+  </ul>
+
+  <p>Then enable <strong>GitHub Pages</strong> from the repository settings.</p>
+
+  <hr />
+
+  <h2>▶️ Usage</h2>
+
+  <h3>Install dependencies</h3>
+  <pre><code>flutter pub get</code></pre>
+
+  <h3>Run locally</h3>
+  <pre><code>flutter run -d chrome</code></pre>
+
+  <h3>Build for production</h3>
+  <pre><code>flutter build web --release</code></pre>
+
+  <hr />
+
+  <h2>👨‍💻 Author</h2>
+  <p>
+    <strong>Waheed Ashraf</strong><br />
+    Senior Software Engineer – Flutter &amp; Web
+  </p>
+  <p>
+    GitHub: <a href="https://github.com/Waheed-Ashraf" target="_blank" rel="noopener noreferrer">
+      https://github.com/Waheed-Ashraf
+    </a>
+  </p>
+
+  <hr />
+
+  <h2>📌 Final Note</h2>
+  <p>This portfolio is intentionally built to be:</p>
+  <ul>
+    <li>✅ Clean</li>
+    <li>✅ Scalable</li>
+    <li>✅ Easy to personalize</li>
+  </ul>
+
+  <p>
+    👉 To customize it, you only need to modify <strong>data files and constants</strong> —
+    <strong>no UI refactoring required</strong>.
+  </p>
+
+  <p>If you like this project, feel free to ⭐ the repository and adapt it for your own use.</p>
+
+  <hr />
+
+  <h2>✨ Optional Enhancements</h2>
+  <p>Want to extend this documentation?</p>
+  <ul>
+    <li>README badges (Flutter, Web, GitHub Pages)</li>
+    <li>Screenshot preview section</li>
+    <li>License section (MIT)</li>
+  </ul>
+
+  <p><strong>👉 Say the word and I’ll add them without breaking copy-paste 👍</strong></p>
+</section>
 
