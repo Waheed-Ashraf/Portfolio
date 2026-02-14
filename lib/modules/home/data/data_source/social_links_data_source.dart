@@ -18,7 +18,8 @@ const socialLinks = <SocialLinkModel>[
   SocialLinkModel(
     socialLogo: Assets.gmail,
     tooltip: "Email",
-    url: "mailto:washraf124@gmail.com",
+    url:
+        "https://mail.google.com/mail/?view=cm&fs=1&to=washraf124@gmail.com&su=Hello%20Waheed",
     accent: ColorPallet.red,
   ),
   SocialLinkModel(
