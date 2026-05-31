@@ -32,6 +32,61 @@
 
   <title>portfolio</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: #000000;
+    }
+
+    body {
+      background:
+        linear-gradient(225deg, #382044 0%, #000000 52%, #062426 100%);
+      overflow: hidden;
+    }
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(225deg, #382044 0%, #000000 52%, #062426 100%);
+      color: #ffffff;
+      font-family: Comfortaa, Arial, sans-serif;
+      z-index: 9999;
+      transition: opacity 260ms ease;
+    }
+
+    #loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .loader-ring {
+      width: 72px;
+      height: 72px;
+      border: 3px solid rgba(255, 255, 255, 0.16);
+      border-top-color: #77dadc;
+      border-right-color: #c115e6;
+      border-radius: 50%;
+      animation: loader-spin 900ms linear infinite;
+    }
+
+    @keyframes loader-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 
   <script>
     // The value below is injected by flutter build, do not touch.
@@ -42,7 +97,22 @@
 </head>
 
 <body>
+  <div id="loading" aria-label="Loading portfolio">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <div>Loading</div>
+    </div>
+  </div>
   <script>
+    function hideLoading() {
+      const loading = document.getElementById('loading');
+      if (!loading) {
+        return;
+      }
+      loading.classList.add('hidden');
+      setTimeout(() => loading.remove(), 300);
+    }
+
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
@@ -51,7 +121,7 @@
         },
         onEntrypointLoaded: function (engineInitializer) {
           engineInitializer.initializeEngine().then(function (appRunner) {
-            appRunner.runApp();
+            Promise.resolve(appRunner.runApp()).then(hideLoading);
           });
         }
       });
