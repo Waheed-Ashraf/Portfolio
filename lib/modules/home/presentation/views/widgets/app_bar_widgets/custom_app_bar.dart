@@ -8,6 +8,7 @@ class CustomAppBar extends StatelessWidget {
     super.key,
     required this.onTapAbout,
     required this.onTapEducation,
+    required this.onTapExperience,
     required this.onTapProjects,
     required this.onTapSkills,
     required this.onTapServices,
@@ -16,6 +17,7 @@ class CustomAppBar extends StatelessWidget {
 
   final VoidCallback onTapAbout;
   final VoidCallback onTapEducation;
+  final VoidCallback onTapExperience;
   final VoidCallback onTapProjects;
   final VoidCallback onTapSkills;
   final VoidCallback onTapServices;
@@ -33,13 +35,20 @@ class CustomAppBar extends StatelessWidget {
         children: [
           const AppLogo(),
           const Expanded(child: SizedBox(width: 8)),
-          CustomAppBarList(
-            onTapAbout: onTapAbout,
-            onTapEducation: onTapEducation,
-            onTapProjects: onTapProjects,
-            onTapSkills: onTapSkills,
-            onTapServices: onTapServices,
-            onTapGithub: onTapGithub,
+          Flexible(
+            flex: 8,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: CustomAppBarList(
+                onTapAbout: onTapAbout,
+                onTapEducation: onTapEducation,
+                onTapExperience: onTapExperience,
+                onTapProjects: onTapProjects,
+                onTapSkills: onTapSkills,
+                onTapServices: onTapServices,
+                onTapGithub: onTapGithub,
+              ),
+            ),
           ),
           const Expanded(child: SizedBox(width: 8)),
         ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/about_section.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/education_and_courses_section/education_and_courses_section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/experience_section/experience_section.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/footer_section/footer.section.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/github_achievments/git_hub_achievments.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/projects_section/project_section.dart';
@@ -23,6 +24,7 @@ class _MobileLayoutState extends State<MobileLayout> {
   final ScrollController _scrollController = ScrollController();
   final _aboutKey = GlobalKey();
   final _eduKey = GlobalKey();
+  final _experienceKey = GlobalKey();
   final _projectsKey = GlobalKey();
   final _skillsKey = GlobalKey();
   final _servicesKey = GlobalKey();
@@ -38,6 +40,7 @@ class _MobileLayoutState extends State<MobileLayout> {
           scrollController: _scrollController,
           about: _aboutKey,
           education: _eduKey,
+          experience: _experienceKey,
           projects: _projectsKey,
           skills: _skillsKey,
           services: _servicesKey,
@@ -62,6 +65,8 @@ class _MobileLayoutState extends State<MobileLayout> {
         SliverToBoxAdapter(key: _aboutKey, child: const AboutSection()),
         SliverToBoxAdapter(
             key: _eduKey, child: const EducationAndCoursesSection()),
+        SliverToBoxAdapter(
+            key: _experienceKey, child: const ExperienceSection()),
         SliverToBoxAdapter(key: _projectsKey, child: const ProjectsSection()),
         SliverToBoxAdapter(key: _skillsKey, child: const SkillsSection()),
         SliverToBoxAdapter(key: _servicesKey, child: const ServicesSection()),

@@ -6,6 +6,7 @@ class CustomAppBarList extends StatelessWidget {
     super.key,
     required this.onTapAbout,
     required this.onTapEducation,
+    required this.onTapExperience,
     required this.onTapProjects,
     required this.onTapSkills,
     required this.onTapServices,
@@ -14,6 +15,7 @@ class CustomAppBarList extends StatelessWidget {
 
   final VoidCallback onTapAbout;
   final VoidCallback onTapEducation;
+  final VoidCallback onTapExperience;
   final VoidCallback onTapProjects;
   final VoidCallback onTapSkills;
   final VoidCallback onTapServices;
@@ -25,6 +27,7 @@ class CustomAppBarList extends StatelessWidget {
       children: [
         AppBarButton(title: "About Me", onTap: onTapAbout),
         AppBarButton(title: "Education", onTap: onTapEducation),
+        AppBarButton(title: "Experience", onTap: onTapExperience),
         AppBarButton(title: "Projects", onTap: onTapProjects),
         AppBarButton(title: "Skills", onTap: onTapSkills),
         AppBarButton(title: "Services", onTap: onTapServices),

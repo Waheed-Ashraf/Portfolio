@@ -5,6 +5,7 @@ import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/about_section.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/app_bar_widgets/custom_app_bar.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/education_and_courses_section/education_and_courses_section.dart';
+import 'package:portfolio/modules/home/presentation/views/widgets/experience_section/experience_section.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/footer_section/footer.section.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/github_achievments/git_hub_achievments.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/projects_section/project_section.dart';
@@ -22,6 +23,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   final _scrollController = ScrollController();
   final _aboutKey = GlobalKey();
   final _eduKey = GlobalKey();
+  final _experienceKey = GlobalKey();
   final _projectsKey = GlobalKey();
   final _skillsKey = GlobalKey();
   final _servicesKey = GlobalKey();
@@ -57,6 +59,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
             background: CustomAppBar(
               onTapAbout: () => _scrollTo(_aboutKey),
               onTapEducation: () => _scrollTo(_eduKey),
+              onTapExperience: () => _scrollTo(_experienceKey),
               onTapProjects: () => _scrollTo(_projectsKey),
               onTapSkills: () => _scrollTo(_skillsKey),
               onTapServices: () => _scrollTo(_servicesKey),
@@ -67,6 +70,8 @@ class _DesktopLayoutState extends State<DesktopLayout> {
         SliverToBoxAdapter(key: _aboutKey, child: const AboutSection()),
         SliverToBoxAdapter(
             key: _eduKey, child: const EducationAndCoursesSection()),
+        SliverToBoxAdapter(
+            key: _experienceKey, child: const ExperienceSection()),
         SliverToBoxAdapter(key: _projectsKey, child: const ProjectsSection()),
         SliverToBoxAdapter(key: _skillsKey, child: const SkillsSection()),
         SliverToBoxAdapter(key: _servicesKey, child: const ServicesSection()),
