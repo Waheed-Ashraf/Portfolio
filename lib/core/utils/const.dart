@@ -32,7 +32,7 @@ final String whatsappUrlMobile =
 final String whatsappUrlWeb =
     'https://api.whatsapp.com/send/?phone=$phoneNumber&text=${Uri.encodeComponent(message)}';
 const String cvUrl =
-    'https://drive.google.com/uc?export=download&id=17hdBKX2uljCDy_0gPJTksSGuZZ1tuLYH';
+    'https://drive.google.com/uc?export=download&id=1JKOsWUxsvcj4MvX94sNokR_au0xHoioz';
 
 const graphUrl = "https://ghchart.rshah.org/39d353/$githubUsername";
 

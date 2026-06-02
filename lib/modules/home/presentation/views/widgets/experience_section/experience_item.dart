@@ -19,6 +19,123 @@ class ExperienceItem extends StatefulWidget {
   State<ExperienceItem> createState() => _ExperienceItemState();
 }
 
+class ExperienceHorizontalItem extends StatefulWidget {
+  const ExperienceHorizontalItem({
+    super.key,
+    required this.model,
+    required this.index,
+    required this.isLast,
+  });
+
+  final ExperienceModel model;
+  final int index;
+  final bool isLast;
+
+  @override
+  State<ExperienceHorizontalItem> createState() =>
+      _ExperienceHorizontalItemState();
+}
+
+class _ExperienceHorizontalItemState extends State<ExperienceHorizontalItem> {
+  bool isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = widget.model.accent;
+
+    return SizedBox(
+      width: 430,
+      child: Padding(
+        padding: EdgeInsets.only(right: widget.isLast ? 0 : 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 180),
+                  height: 16,
+                  width: 16,
+                  decoration: BoxDecoration(
+                    color: isHovered ? accent : Colors.black,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: accent, width: 2),
+                    boxShadow: isHovered
+                        ? [
+                            BoxShadow(
+                              color: accent.withValues(alpha: 0.35),
+                              blurRadius: 16,
+                              spreadRadius: 2,
+                            ),
+                          ]
+                        : [],
+                  ),
+                ),
+                if (!widget.isLast)
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      color: ColorPallet.white.withValues(alpha: 0.12),
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 14),
+            MouseRegion(
+              onEnter: (_) => setState(() => isHovered = true),
+              onExit: (_) => setState(() => isHovered = false),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 180),
+                curve: Curves.easeOut,
+                height: 330,
+                padding: const EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: isHovered
+                      ? ColorPallet.white.withValues(alpha: 0.08)
+                      : Colors.black.withValues(alpha: 0.16),
+                  border: Border.all(
+                    color: isHovered
+                        ? accent.withValues(alpha: 0.55)
+                        : ColorPallet.white.withValues(alpha: 0.10),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _Header(model: widget.model, index: widget.index),
+                    const SizedBox(height: 12),
+                    Text(
+                      widget.model.description,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppStyles.styleRegular14(context).copyWith(
+                        color: ColorPallet.white.withValues(alpha: 0.72),
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    Text(
+                      widget.model.highlights.first,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppStyles.styleRegular14(context).copyWith(
+                        color: ColorPallet.white.withValues(alpha: 0.86),
+                        height: 1.45,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _ExperienceItemState extends State<ExperienceItem> {
   bool isHovered = false;
 
@@ -102,15 +219,6 @@ class _ExperienceItemState extends State<ExperienceItem> {
                         color: ColorPallet.white.withValues(alpha: 0.86),
                         height: 1.45,
                       ),
-                    ),
-                    const SizedBox(height: 14),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: [
-                        for (final tech in widget.model.technologies)
-                          _TechLabel(label: tech, accent: accent),
-                      ],
                     ),
                   ],
                 ),

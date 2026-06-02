@@ -51,4 +51,8 @@ class Assets {
   static const String secondHomeLogo = "assets/images/secondHome.png";
 
   static const String menuIcon = "assets/images/menu.svg";
+
+  static const String eEngine = "assets/images/EEngine.png";
+  static const String elsa3ka = "assets/images/Elsa3ka.png";
+  static const String emerald = "assets/images/Emerald.jpg";
 }

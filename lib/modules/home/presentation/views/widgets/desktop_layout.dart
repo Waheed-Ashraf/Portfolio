@@ -69,10 +69,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
         ),
         SliverToBoxAdapter(key: _aboutKey, child: const AboutSection()),
         SliverToBoxAdapter(
-            key: _eduKey, child: const EducationAndCoursesSection()),
-        SliverToBoxAdapter(
             key: _experienceKey, child: const ExperienceSection()),
         SliverToBoxAdapter(key: _projectsKey, child: const ProjectsSection()),
+        SliverToBoxAdapter(
+            key: _eduKey, child: const EducationAndCoursesSection()),
         SliverToBoxAdapter(key: _skillsKey, child: const SkillsSection()),
         SliverToBoxAdapter(key: _servicesKey, child: const ServicesSection()),
         SliverToBoxAdapter(

@@ -112,11 +112,6 @@ class _HomeViewState extends State<HomeView> {
               onTap: keys == null ? null : () => _scrollTo(keys.about),
             ),
             ListTile(
-              title: const Text("Education & Certifications",
-                  style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.education),
-            ),
-            ListTile(
               title: const Text("Experience",
                   style: TextStyle(color: Colors.white)),
               onTap: keys == null ? null : () => _scrollTo(keys.experience),
@@ -125,6 +120,11 @@ class _HomeViewState extends State<HomeView> {
               title:
                   const Text("Projects", style: TextStyle(color: Colors.white)),
               onTap: keys == null ? null : () => _scrollTo(keys.projects),
+            ),
+            ListTile(
+              title: const Text("Education & Certifications",
+                  style: TextStyle(color: Colors.white)),
+              onTap: keys == null ? null : () => _scrollTo(keys.education),
             ),
             ListTile(
               title:

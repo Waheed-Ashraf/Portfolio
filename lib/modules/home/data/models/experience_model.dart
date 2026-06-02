@@ -7,7 +7,7 @@ class ExperienceModel {
   final String location;
   final String description;
   final List<String> highlights;
-  final List<String> technologies;
+  final List<String>? technologies;
   final Color accent;
   final String? logoAsset;
 
@@ -18,7 +18,7 @@ class ExperienceModel {
     required this.location,
     required this.description,
     required this.highlights,
-    required this.technologies,
+    this.technologies,
     required this.accent,
     this.logoAsset,
   });
