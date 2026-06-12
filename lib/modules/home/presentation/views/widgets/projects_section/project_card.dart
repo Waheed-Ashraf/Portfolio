@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/services/portfolio_analytics.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/launch_url.dart';
 import 'package:portfolio/modules/home/data/models/project_model.dart';
@@ -140,8 +141,19 @@ class ProjectCardState extends State<ProjectCard> {
                                   child: LinkButton(
                                     icon: link.icon,
                                     label: link.label,
-                                    onTap: () => launchCustomUr(
-                                        context: context, url: link.url),
+                                    onTap: () async {
+                                      await PortfolioAnalytics
+                                          .logProjectLinkClick(
+                                        projectName: model.title,
+                                        linkType: link.label,
+                                        url: link.url,
+                                      );
+                                      if (!context.mounted) return;
+                                      await launchCustomUr(
+                                        context: context,
+                                        url: link.url,
+                                      );
+                                    },
                                   ),
                                 );
                               }).toList(),

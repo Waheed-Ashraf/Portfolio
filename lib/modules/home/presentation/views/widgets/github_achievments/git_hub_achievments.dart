@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/services/portfolio_analytics.dart';
 import 'package:portfolio/core/utils/app_styles.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/const.dart';
@@ -113,8 +114,18 @@ class GithubActivitySection extends StatelessWidget {
                                 child: GestureDetector(
                                   onTap: a.url == null
                                       ? null
-                                      : () => launchCustomUr(
-                                          context: context, url: a.url!),
+                                      : () async {
+                                          await PortfolioAnalytics
+                                              .logGithubAchievementClick(
+                                            achievementName: a.title,
+                                            url: a.url!,
+                                          );
+                                          if (!context.mounted) return;
+                                          await launchCustomUr(
+                                            context: context,
+                                            url: a.url!,
+                                          );
+                                        },
                                   child: AchievementCard(model: a),
                                 ),
                               ),
@@ -128,8 +139,18 @@ class GithubActivitySection extends StatelessWidget {
                                 child: GestureDetector(
                                   onTap: a.url == null
                                       ? null
-                                      : () => launchCustomUr(
-                                          context: context, url: a.url!),
+                                      : () async {
+                                          await PortfolioAnalytics
+                                              .logGithubAchievementClick(
+                                            achievementName: a.title,
+                                            url: a.url!,
+                                          );
+                                          if (!context.mounted) return;
+                                          await launchCustomUr(
+                                            context: context,
+                                            url: a.url!,
+                                          );
+                                        },
                                   child: AchievementCard(model: a),
                                 ),
                               ),

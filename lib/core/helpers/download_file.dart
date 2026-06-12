@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:universal_html/html.dart' as html;
 
+import 'package:portfolio/core/services/portfolio_analytics.dart';
 import 'package:portfolio/core/utils/const.dart';
 import 'package:portfolio/core/utils/app_snackbar.dart';
 
@@ -15,6 +16,8 @@ Future<void> downloadCV(BuildContext context) async {
       title: "CV",
       message: "Download started…",
     );
+
+    await PortfolioAnalytics.logCvDownload();
 
     // ---------------- WEB ----------------
     if (kIsWeb) {
@@ -31,6 +34,8 @@ Future<void> downloadCV(BuildContext context) async {
     final dio = Dio();
     await dio.download(cvUrl, filePath);
   } catch (e) {
+    if (!context.mounted) return;
+
     AppSnackBar.show(
       context,
       type: AppSnackType.error,

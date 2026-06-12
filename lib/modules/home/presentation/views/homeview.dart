@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/core/services/portfolio_analytics.dart';
 import 'package:portfolio/core/utils/app_images.dart';
 import 'package:portfolio/core/utils/color_pallet.dart';
 import 'package:portfolio/core/utils/const.dart';
@@ -20,9 +21,19 @@ class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   MobileSectionKeys? _mobileKeys;
-  Future<void> _scrollTo(GlobalKey key) async {
+
+  @override
+  void initState() {
+    super.initState();
+    PortfolioAnalytics.logPortfolioVisit();
+  }
+
+  Future<void> _scrollTo(GlobalKey key, String sectionName) async {
     final keys = _mobileKeys;
     if (keys == null) return;
+
+    await PortfolioAnalytics.logSectionOpen(sectionName);
+    if (!mounted) return;
 
     final ctx = key.currentContext;
     if (ctx == null) return;
@@ -66,7 +77,10 @@ class _HomeViewState extends State<HomeView> {
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 leading: IconButton(
-                  onPressed: () => scaffoldKey.currentState!.openDrawer(),
+                  onPressed: () {
+                    PortfolioAnalytics.logMenuOpen();
+                    scaffoldKey.currentState!.openDrawer();
+                  },
                   icon: SvgPicture.asset(Assets.menuIcon,
                       colorFilter: const ColorFilter.mode(
                           ColorPallet.white, BlendMode.srcIn),
@@ -109,37 +123,47 @@ class _HomeViewState extends State<HomeView> {
             ListTile(
               title:
                   const Text("About Me", style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.about),
+              onTap: keys == null ? null : () => _scrollTo(keys.about, 'about'),
             ),
             ListTile(
               title: const Text("Experience",
                   style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.experience),
+              onTap: keys == null
+                  ? null
+                  : () => _scrollTo(keys.experience, 'experience'),
             ),
             ListTile(
               title:
                   const Text("Projects", style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.projects),
+              onTap: keys == null
+                  ? null
+                  : () => _scrollTo(keys.projects, 'projects'),
             ),
             ListTile(
               title: const Text("Education & Certifications",
                   style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.education),
+              onTap: keys == null
+                  ? null
+                  : () => _scrollTo(keys.education, 'education'),
             ),
             ListTile(
               title:
                   const Text("Skills", style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.skills),
+              onTap:
+                  keys == null ? null : () => _scrollTo(keys.skills, 'skills'),
             ),
             ListTile(
               title:
                   const Text("Services", style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.services),
+              onTap: keys == null
+                  ? null
+                  : () => _scrollTo(keys.services, 'services'),
             ),
             ListTile(
               title:
                   const Text("GitHub", style: TextStyle(color: Colors.white)),
-              onTap: keys == null ? null : () => _scrollTo(keys.github),
+              onTap:
+                  keys == null ? null : () => _scrollTo(keys.github, 'github'),
             ),
           ],
         ),

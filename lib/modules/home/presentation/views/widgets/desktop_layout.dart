@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/core/services/portfolio_analytics.dart';
 import 'package:portfolio/core/utils/const.dart';
 
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/about_section.dart';
@@ -30,9 +31,13 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   final _githubKey = GlobalKey();
   final _footerKey = GlobalKey();
 
-  Future<void> _scrollTo(GlobalKey key) async {
+  Future<void> _scrollTo(GlobalKey key, String sectionName) async {
+    await PortfolioAnalytics.logSectionOpen(sectionName);
+    if (!mounted) return;
+
     final ctx = key.currentContext;
     if (ctx == null) return;
+    if (!ctx.mounted) return;
 
     await Scrollable.ensureVisible(
       ctx,
@@ -57,13 +62,13 @@ class _DesktopLayoutState extends State<DesktopLayout> {
           floating: true,
           flexibleSpace: FlexibleSpaceBar(
             background: CustomAppBar(
-              onTapAbout: () => _scrollTo(_aboutKey),
-              onTapEducation: () => _scrollTo(_eduKey),
-              onTapExperience: () => _scrollTo(_experienceKey),
-              onTapProjects: () => _scrollTo(_projectsKey),
-              onTapSkills: () => _scrollTo(_skillsKey),
-              onTapServices: () => _scrollTo(_servicesKey),
-              onTapGithub: () => _scrollTo(_githubKey),
+              onTapAbout: () => _scrollTo(_aboutKey, 'about'),
+              onTapEducation: () => _scrollTo(_eduKey, 'education'),
+              onTapExperience: () => _scrollTo(_experienceKey, 'experience'),
+              onTapProjects: () => _scrollTo(_projectsKey, 'projects'),
+              onTapSkills: () => _scrollTo(_skillsKey, 'skills'),
+              onTapServices: () => _scrollTo(_servicesKey, 'services'),
+              onTapGithub: () => _scrollTo(_githubKey, 'github'),
             ),
           ),
         ),

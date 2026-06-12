@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/services/portfolio_analytics.dart';
 import 'package:portfolio/core/utils/launch_url.dart';
 import 'package:portfolio/modules/home/data/data_source/social_links_data_source.dart';
 import 'package:portfolio/modules/home/presentation/views/widgets/about_widgets/social_icon_button.dart';
@@ -19,7 +20,14 @@ class SocialLinksRow extends StatelessWidget {
           socialLogo: item.socialLogo,
           tooltip: item.tooltip,
           accent: item.accent,
-          onTap: () => launchCustomUr(context: context, url: item.url),
+          onTap: () async {
+            await PortfolioAnalytics.logSocialLinkClick(
+              platform: item.tooltip,
+              url: item.url,
+            );
+            if (!context.mounted) return;
+            await launchCustomUr(context: context, url: item.url);
+          },
         );
       }).toList(),
     );

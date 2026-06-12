@@ -32,6 +32,8 @@ dependencies:
   animated_text_kit: ^4.2.2
   cupertino_icons: ^1.0.6
   dio: ^5.5.0
+  firebase_analytics: ^12.4.2
+  firebase_core: ^4.10.0
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
