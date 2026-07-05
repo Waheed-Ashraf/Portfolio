@@ -78129,7 +78129,7 @@ A.Q5.prototype={
 I(a){return B.Gb}}
 A.Km.prototype={
 I(a){var s=null
-return A.axa(A.e9(A.rK(B.AB,A.iV(B.aV,A.b([A.Mj(0,A.dn(s,s,B.t,s,s,new A.bG(s,s,A.dA(B.G,2),B.l3,s,B.fn,B.I),s,280,s,B.mC,s,s,s),s,s,0,0,s,s),A.pJ(0,A.a59("assets/images/animatedImage1.png",B.AN)),A.Mj(0,A.dn(s,s,B.t,s,s,B.AK,s,280,s,B.mC,s,s,s),s,s,0,0,s,s)],t.p),B.bF)),400,260),B.dH)}}
+return A.axa(A.e9(A.rK(B.AB,A.iV(B.aV,A.b([A.Mj(0,A.dn(s,s,B.t,s,s,new A.bG(s,s,A.dA(B.G,2),B.l3,s,B.fn,B.I),s,280,s,B.mC,s,s,s),s,s,0,0,s,s),A.pJ(0,A.a59("assets/images/animatedImage1.PNG",B.AN)),A.Mj(0,A.dn(s,s,B.t,s,s,B.AK,s,280,s,B.mC,s,s,s),s,s,0,0,s,s)],t.p),B.bF)),400,260),B.dH)}}
 A.n6.prototype={
 a7(){return new A.Wp()}}
 A.Wp.prototype={
